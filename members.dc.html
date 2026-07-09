@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="members.dc.html" hint-size="100%,64px"></x-import>
+
+  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
+    </div>
+    <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
+    <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
+      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Members</h1>
+    </div>
+  </section>
+
+  <main style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:64px;">
+
+    <section style="display:flex; flex-direction:column; gap:24px;">
+      <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Principal Investigator</h2>
+      <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,460px">
+        <div style="display:grid; grid-template-columns:300px 1fr 1fr; gap:32px;">
+          <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
+            <img src="assets/pi-photo.jpg" alt="Jisu Jung" style="width:260px; height:260px; object-fit:cover; border-radius:16px; display:block; background:var(--blue-100);">
+            <div>
+              <h3 style="font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary); margin:0 0 4px;">Jisu Jung</h3>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">Senior Researcher</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">
+              <span>✉️ jsjung@kicet.re.kr</span>
+              <span>📞 +82-55-792-2619</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <h4 style="margin:0 0 12px; font-family:var(--font-display); font-size:var(--text-lg); font-weight:700; color:var(--brand-primary);">Research experience</h4>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Senior researcher <span style="color:var(--text-tertiary); font-weight:400;">(2026.04 – Present)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Korea Institute of Ceramic Engineering &amp; Technology</p>
+                </div>
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Researcher <span style="color:var(--text-tertiary); font-weight:400;">(2025.03 – 2026.03)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Korea Institute of Ceramic Engineering &amp; Technology</p>
+                </div>
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Visiting student <span style="color:var(--text-tertiary); font-weight:400;">(2024.07 – 2024.08)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Imperial College London (Advisor: Aron Walsh)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <h4 style="margin:0 0 12px; font-family:var(--font-display); font-size:var(--text-lg); font-weight:700; color:var(--brand-primary);">Education</h4>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Ph.D. in Materials Science and Engineering <span style="color:var(--text-tertiary); font-weight:400;">(2019.03 – 2025.02)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Seoul National University · Dissertation: Investigation of the degradation of Pt-based catalysts using machine learning potential (Advisor: Seungwu Han)</p>
+                </div>
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">B.S. in Materials Science and Engineering <span style="color:var(--text-tertiary); font-weight:400;">(2013.03 – 2019.02)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Seoul National University</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 style="margin:0 0 12px; font-family:var(--font-display); font-size:var(--text-lg); font-weight:700; color:var(--brand-primary);">Awards</h4>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Excellent Ph.D. Thesis Award <span style="color:var(--text-tertiary); font-weight:400;">(2024)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Dept. of Materials Science &amp; Engineering, Seoul National University</p>
+                </div>
+                <div>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Best Oral Presentation <span style="color:var(--text-tertiary); font-weight:400;">(2022)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Int'l Conf. on Electronic Materials and Nanotechnology for Green Environment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </x-import>
+    </section>
+
+    <section style="display:flex; flex-direction:column; gap:24px;">
+      <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Members</h2>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="2">
+          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <img src="assets/{{ m.photoId }}.jpg" alt="{{ m.name }}" style="width:100%; height:180px; object-fit:cover; border-radius:14px; display:block; background:var(--blue-100);">
+              <div>
+                <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ m.name }}</p>
+              </div>
+              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="info" hint-size="auto,24px">{{ m.role }}</x-import>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-normal);">{{ m.topic }}</p>
+              <p style="margin:0; font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">✉️ {{ m.email }}</p>
+            </div>
+          </x-import>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex; flex-direction:column; gap:24px;">
+      <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Alumni</h2>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+        <sc-for list="{{ alumni }}" as="a" hint-placeholder-count="2">
+          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <img src="assets/{{ a.photoId }}.jpg" alt="{{ a.name }}" style="width:100%; height:180px; object-fit:cover; border-radius:14px; display:block; background:var(--blue-100);">
+              <div>
+                <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ a.name }}</p>
+                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">{{ a.affiliation }}</p>
+              </div>
+              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,24px">{{ a.role }}</x-import>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">{{ a.period }}</p>
+            </div>
+          </x-import>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="join" style="display:flex; flex-direction:column; gap:24px; scroll-margin-top:24px;">
+      <span style="font-family:var(--font-mono); font-size:var(--text-2xs); letter-spacing:var(--tracking-wider); text-transform:uppercase; color:var(--brand-accent);">Recruiting</span>
+      <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">We are looking for researchers to join us</h2>
+      <p style="margin:0; font-family:var(--font-body); font-size:var(--text-md); color:var(--text-secondary); max-width:760px; line-height:var(--leading-relaxed);">We are currently recruiting highly motivated researchers and students, including joint graduate program students, contract researchers, and trainee/practicum students. If you are interested, please get in touch.</p>
+
+      <div style="margin-top:8px;">
+        <a href="contact.dc.html" style="white-space:nowrap;"><x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Button" variant="accent" hint-size="160px,44px">Contact me</x-import></a>
+      </div>
+    </section>
+
+  </main>
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Footer" hint-size="100%,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      navLinks: [
+        { label: 'Home', href: 'index.dc.html' },
+        { label: 'Research', href: 'research.dc.html' },
+        { label: 'Members', href: 'members.dc.html' },
+        { label: 'Publication', href: 'publication.dc.html' },
+        { label: 'Presentation', href: 'presentation.dc.html' },
+        { label: 'News', href: 'news.dc.html' },
+        { label: 'Contact', href: 'contact.dc.html' },
+      ],
+      members: [
+        { photoId: 'member-hb', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Machine learning force field, generative AI for materials discovery', email: 'hgbak@kicet.re.kr' },
+        { photoId: 'member-ha', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Machine learning force field, generative AI', email: 'hsahn@unist.ac.kr' },
+      ],
+      alumni: [
+        { photoId: 'alumni-yk', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2025.11 –' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

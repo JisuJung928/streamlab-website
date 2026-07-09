@@ -1,0 +1,74 @@
+/* ==========================================================================
+   STREAM Lab — Color tokens
+   Primary pair sourced from Pukyong National University's published brand
+   colors (Main/Sub Colors, https://www.pknu.ac.kr/main/121), converted from
+   Pantone to sRGB hex as the closest practical screen match:
+     Pantone Process Blue C -> #0085CA
+     Pantone 281 C          -> #00205B
+   Sub-palette accents approximate Pantone 873C (metallic gold), 877C
+   (metallic silver), and 568C (sage) for scientific/materials accenting.
+   These are ink-to-screen approximations, not exact Pantone matches —
+   flag any brand-critical print use back to Pantone bridge values.
+   ========================================================================== */
+
+:root {
+  /* ---- Base palette ---- */
+  --navy-900: #00173d;
+  --navy-800: #00205b;   /* Pantone 281C */
+  --navy-700: #0a2e6e;
+  --blue-600: #0085ca;   /* Pantone Process Blue C — primary */
+  --blue-500: #2f9ed9;
+  --blue-100: #e3f2fa;
+
+  --gold-700: #8a6a24;
+  --gold-600: #a9812e;   /* Pantone 873C approx — accent */
+  --gold-200: #f0e2c2;
+
+  --sage-600: #6d8c68;   /* Pantone 568C approx — secondary accent */
+  --sage-100: #e7eee5;
+
+  /* ---- Neutrals (cool, blue-tinted to sit with navy) ---- */
+  --fog-0: #ffffff;
+  --fog-50: #f6f8fa;
+  --fog-100: #eef1f4;
+  --fog-200: #dde3e8;
+  --fog-300: #c3ccd3;
+  --fog-400: #9aa6b0;
+  --fog-500: #71808c;
+  --fog-600: #56626c;
+  --fog-700: #3d474f;
+  --fog-800: #262d33;
+  --fog-900: #14181c;
+
+  /* ---- Semantic surface / text aliases ---- */
+  --surface-page: var(--fog-50);
+  --surface-card: var(--fog-0);
+  --surface-sunken: var(--fog-100);
+  --surface-inverse: var(--navy-900);
+
+  --text-primary: var(--fog-900);
+  --text-secondary: var(--fog-600);
+  --text-tertiary: var(--fog-500);
+  --text-on-inverse: var(--fog-0);
+  --text-on-inverse-muted: #b9c6d6;
+
+  --border-subtle: var(--fog-200);
+  --border-default: var(--fog-300);
+  --border-strong: var(--fog-400);
+
+  --brand-primary: var(--blue-600);
+  --brand-primary-hover: #0074b0;
+  --brand-primary-active: #005e8e;
+  --brand-emphasis: var(--navy-800);
+  --brand-accent: var(--gold-600);
+  --brand-accent-hover: var(--gold-700);
+  --brand-secondary: var(--sage-600);
+
+  --link: var(--blue-600);
+  --link-hover: var(--brand-primary-hover);
+
+  --focus-ring: #2f9ed9;
+
+  --status-info-bg: var(--blue-100);
+  --status-info-text: var(--navy-800);
+}

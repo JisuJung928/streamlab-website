@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="presentation.dc.html" hint-size="100%,64px"></x-import>
+
+  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
+    </div>
+    <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
+    <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
+      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Presentation</h1>
+    </div>
+  </section>
+
+  <main style="max-width:1240px; margin:0 auto; padding:64px 48px;">
+    <div style="display:flex; flex-direction:column;">
+      <sc-for list="{{ presentations }}" as="talk" hint-placeholder-count="8">
+        <div style="display:flex; gap:20px; padding:16px 0; border-bottom:1px solid var(--border-subtle); align-items:flex-start;">
+          <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-tertiary); width:56px; flex:none; padding-top:2px;">{{ talk.year }}</span>
+          <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+            <p style="margin:0; font-family:var(--font-body); font-size:var(--text-base); font-weight:600; color:var(--text-primary); line-height:var(--leading-snug);">{{ talk.title }}</p>
+            <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">{{ talk.venue }}</p>
+            <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">
+              <sc-for list="{{ talk.authorParts }}" as="ap" hint-placeholder-count="1">
+                <sc-if value="{{ ap.bold }}" hint-placeholder-val="{{ false }}">
+                  <strong style="text-decoration:underline; color:var(--text-primary);">{{ ap.text }}</strong>
+                </sc-if>
+                <sc-if value="{{ ap.plain }}" hint-placeholder-val="{{ true }}">
+                  <span>{{ ap.text }}</span>
+                </sc-if>
+              </sc-for>
+            </p>
+          </div>
+          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="{{ talk.tone }}" hint-size="70px,24px">{{ talk.type }}</x-import>
+        </div>
+      </sc-for>
+    </div>
+  </main>
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Footer" hint-size="100%,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PRESENTER_REGEX = /Jung, J\./g;
+
+function splitAuthors(str) {
+  const parts = [];
+  let last = 0;
+  let m;
+  PRESENTER_REGEX.lastIndex = 0;
+  while ((m = PRESENTER_REGEX.exec(str))) {
+    if (m.index > last) parts.push({ text: str.slice(last, m.index), bold: false, plain: true });
+    parts.push({ text: m[0], bold: true, plain: false });
+    last = m.index + m[0].length;
+  }
+  if (last < str.length) parts.push({ text: str.slice(last), bold: false, plain: true });
+  return parts;
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    const rawPresentations = [
+      { year: '2026', authors: 'Jung, J., Xia, L., Han, S. & Walsh, A.', title: 'Mapping the comprehensive Energy Landscape of Inorganic Halide Perovskites with Machine Learning Force Fields', venue: '2026 MRS Spring Meeting, Hawaii (USA), Apr. 26 \u2013 May 1', type: 'Poster', tone: 'neutral' },
+      { year: '2026', authors: 'Jung, J.', title: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior analysis', venue: 'Invited Seminar, Dept. of Materials Science and Engineering, PNU, Busan (Korea), Mar. 19', type: 'Invited', tone: 'accent' },
+      { year: '2026', authors: 'Jung, J.', title: 'Multi-scale modeling to overcome the timescale limits of MD: long-term degradation study of platinum nanoparticles', venue: '2026 Computational Material Science Winter Symposium, KIM, Pohang (Korea), Jan. 23 \u2013 25', type: 'Invited', tone: 'accent' },
+      { year: '2025', authors: 'Jung, J., Xia, L., Han, S. & Walsh, A.', title: 'Mapping the energy landscape of octahedral tilting in halide perovskites using a machine learning force field', venue: '2025 Fall Meeting of the Korean Ceramic Society, Seoul (Korea), Oct. 15 \u2013 17', type: 'Poster', tone: 'neutral' },
+      { year: '2024', authors: 'Jung, J., Ju, S., Kim, P.-H., Hong, D., Jeong, W., Lee, J., Han, S. & Kang, S.', title: 'Off-lattice kinetic Monte Carlo simulation of Pt3Co nanoparticle degradation using machine-learned potential', venue: 'TYC 7th Energy Materials Workshop, London (UK), Jul. 24 \u2013 26', type: 'Poster', tone: 'neutral' },
+      { year: '2024', authors: 'Jung, J., Park, Y., Kim, J., Hwang, S. & Han, S.', title: 'Introduction to SevenNet as a foundation model and its application', venue: '2024 KIChE Spring Meeting Symposium, Jeju (Korea), Apr. 24 \u2013 27', type: 'Poster', tone: 'neutral' },
+      { year: '2023', authors: 'Jung, J., An, H., Hong, D. & Han, S.', title: 'Adaptive kinetic Monte Carlo simulation on platinum oxidation at electrochemical conditions using machine-learned potentials', venue: '2023 MRS Fall Meeting, Boston (USA), Nov. 26 \u2013 Dec. 1', type: 'Oral', tone: 'info' },
+      { year: '2023', authors: 'Jung, J., An, H., Hong, D. & Han, S.', title: 'Efficiency enhancement of saddle point search algorithms with SHERPA and machine-learned potentials', venue: 'The 19th KIAS Electronic Structure Calculation Workshop, Seoul (Korea), Jul. 13 \u2013 14', type: 'Poster', tone: 'neutral' },
+      { year: '2023', authors: 'Jung, J., An, H., Hong, D. & Han, S.', title: 'Development of efficient saddle point searching methods: application on oxidized platinum surface with machine-learned potentials', venue: '2023 New Advances in Theoretical and Computational Molecular Science for Complex and Quantum Processes, Seoul (Korea), Jun. 27 \u2013 Jul. 30', type: 'Poster', tone: 'neutral' },
+      { year: '2023', authors: 'Jung, J. & Han, S.', title: 'Constructing comprehensive reaction tables using machine-learned interatomic potentials: application on oxidized Pt(111) surface', venue: '2023 Spring Meeting & Academic Presentation of the Korean Electrochemical Society, Jeju (Korea), Apr. 5 \u2013 7', type: 'Oral', tone: 'info' },
+      { year: '2022', authors: 'Jung, J., Ju, S., Kim, P.-H., Jeong, W., Lee, J., Kang, S. & Han, S.', title: 'Development of neural network interatomic potential for simulating evolution of Pt3Co nanoparticles under electrochemical conditions', venue: '2022 MRS Fall Meeting, Boston (USA), Nov. 27 \u2013 Dec. 2', type: 'Poster', tone: 'neutral' },
+      { year: '2022', authors: 'Jung, J., Ju, S., Kim, P.-H., Jeong, W., Lee, J., Kim, G., Kang, S. & Han, S.', title: 'Structural evolution of Pt3Co nanoparticles described by kinetic Monte Carlo simulation combined with neural network potentials', venue: 'The 7th International Conference on Electronic Materials and Nanotechnology for Green Environment, Jeju (Korea), Nov. 6 \u2013 9', type: 'Oral', tone: 'info' },
+      { year: '2022', authors: 'Jung, J. & Han, S.', title: 'Development of the machine-learned interatomic potential for platinum oxidation and its connection to kinetic Monte Carlo simulation', venue: 'KPS 70th Anniversary and 2022 Fall Meeting, Busan (Korea), Oct. 18 \u2013 21', type: 'Poster', tone: 'neutral' },
+      { year: '2022', authors: 'Jung, J., Ju, S., Kim, P.-H., Jeong, W., Lee, J., Kang, S. & Han, S.', title: 'Degradation of Pt3Co nanoparticle in electrochemical environment: adaptive kinetic Monte Carlo simulation using neural network potentials', venue: '2022 Nano Korea, Ilsan (Korea), Jul. 6 \u2013 8', type: 'Poster', tone: 'neutral' },
+      { year: '2022', authors: 'Jung, J., Ju, S., Kim, P.-H., Jeong, W., Lee, J., Kang, S. & Han, S.', title: 'Kinetic Monte Carlo simulation of Pt3Co alloy nanoparticle on the electrochemical environment by neural network potential', venue: '2022 Spring Meeting of the Korean Ceramic Society, Yeosu (Korea), Apr. 13 \u2013 15', type: 'Poster', tone: 'neutral' },
+      { year: '2021', authors: 'Jung, J., Ju, S., Kim, P.-H., Kang, S., Jeong, W. & Han, S.', title: 'Degradation evolution of Pt alloy nanoparticle via kinetic Monte Carlo simulation driven by neural network potentials', venue: '2021 MRS Fall Meeting, Online (USA), Dec. 6 \u2013 8', type: 'Poster', tone: 'neutral' },
+      { year: '2021', authors: 'Jung, J., Ju, S., Kim, P.-H., Kang, S., Jeong, W. & Han, S.', title: 'Unraveling the effect for the durability of Pt-Co alloy nanoparticle electrocatalyst via kinetic Monte Carlo simulation driven by neural network potentials', venue: 'The 2021 Fall Meeting of the Korean Physical Society, Online (Korea), Oct. 20 \u2013 22', type: 'Oral', tone: 'info' },
+      { year: '2021', authors: 'Jung, J., Yoo, D., Jeong, W., Hwang, S. & Han, S.', title: 'Metadynamics sampling in atomic environment space for collecting training data for machine learning potentials', venue: '2021 Spring Conference, KIMM, Heongseong & Online (Korea), Apr. 28 \u2013 30', type: 'Oral', tone: 'info' },
+      { year: '2021', authors: 'Jung, J., Yoo, D., Jeong, W. & Han, S.', title: 'Efficient sampling for training set of machine learning potentials using metadynamics', venue: '2021 MRS Spring Meeting, Online (USA), Apr. 17 \u2013 23', type: 'Poster', tone: 'neutral' },
+      { year: '2020', authors: 'Jung, J., Yoo, D., Jeong, W. & Han, S.', title: 'Autonomous generation of training data for machine learning potentials via metadynamics sampling', venue: '2020 Fall Meeting of the Korean Ceramic Society, Daejeon & Online (Korea), Nov. 23 \u2013 25', type: 'Poster', tone: 'neutral' },
+      { year: '2020', authors: 'Jung, J., Lee, K., Yoo, D., Jeong, W. & Han, S.', title: 'Development of the neural network potential via atomic energy training', venue: '2020 Spring Meeting of the Korean Ceramic Society, Online (Korea), Jul. 6 \u2013 9', type: 'Poster', tone: 'neutral' },
+      { year: '2019', authors: 'Jung, J., Lee, K., Yoo, D., Jeong, W. & Han, S.', title: 'Effects of training the stress tensor in neural network potential', venue: 'The 5th International Conference on Molecular Simulation, Jeju (Korea), Nov. 3 \u2013 6', type: 'Poster', tone: 'neutral' },
+    ];
+
+    const presentations = rawPresentations.map(p => ({ ...p, authorParts: splitAuthors(p.authors) }));
+
+    return {
+      navLinks: [
+        { label: 'Home', href: 'index.dc.html' },
+        { label: 'Research', href: 'research.dc.html' },
+        { label: 'Members', href: 'members.dc.html' },
+        { label: 'Publication', href: 'publication.dc.html' },
+        { label: 'Presentation', href: 'presentation.dc.html' },
+        { label: 'News', href: 'news.dc.html' },
+        { label: 'Contact', href: 'contact.dc.html' },
+      ],
+      presentations,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

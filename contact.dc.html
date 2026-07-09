@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
+  <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="contact.dc.html" hint-size="100%,64px"></x-import>
+
+  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+    <div style="position:absolute; inset:0; z-index:0;">
+      <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
+    </div>
+    <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
+    <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
+      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Contact</h1>
+    </div>
+  </section>
+
+  <main style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:48px;">
+
+    <section style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,320px">
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <h2 style="margin:0; font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary);">Korea Institute of Ceramic Engineering &amp; Technology</h2>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Address</p>
+              <p style="margin:2px 0 0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">101 Soho-ro, Jinju-si, Gyeongsangnam-do, 52851, Republic of Korea</p>
+            </div>
+            <div>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Phone</p>
+              <p style="margin:2px 0 0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">+82-55-792-2500</p>
+            </div>
+            <div>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Email</p>
+              <p style="margin:2px 0 0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">kicet@kicet.re.kr</p>
+            </div>
+          </div>
+          <div style="height:1px; background:var(--border-subtle);"></div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Principal Investigator</p>
+              <p style="margin:2px 0 0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">Jisu Jung, Senior Researcher</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <a href="mailto:jsjung@kicet.re.kr" style="font-family:var(--font-body); font-size:var(--text-sm); font-weight:600;">jsjung@kicet.re.kr</a>
+              <span style="font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">+82-55-792-2619</span>
+            </div>
+          </div>
+        </div>
+      </x-import>
+
+      <div style="position:relative; width:100%; min-height:320px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
+        <iframe title="KICET location map" src="https://www.google.com/maps?q=Korea+Institute+of+Ceramic+Engineering+and+Technology,+Jinju&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Footer" hint-size="100%,140px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      navLinks: [
+        { label: 'Home', href: 'index.dc.html' },
+        { label: 'Research', href: 'research.dc.html' },
+        { label: 'Members', href: 'members.dc.html' },
+        { label: 'Publication', href: 'publication.dc.html' },
+        { label: 'Presentation', href: 'presentation.dc.html' },
+        { label: 'News', href: 'news.dc.html' },
+        { label: 'Contact', href: 'contact.dc.html' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
