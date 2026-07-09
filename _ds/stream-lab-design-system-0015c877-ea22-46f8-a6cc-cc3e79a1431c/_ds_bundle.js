@@ -1585,7 +1585,7 @@ function NavBar({
   brand = 'STREAM Lab',
   links = [],
   activeHref,
-  logo = 'assets/logo.jpg'
+  logo = 'assets/logo.png'
 }) {
   const [open, setOpen] = useState(false);
   return /*#__PURE__*/React.createElement("header", {
