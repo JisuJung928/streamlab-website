@@ -24,7 +24,7 @@
 
 <div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
 
-  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="members.dc.html" hint-size="100%,64px"></x-import>
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="members.html" hint-size="100%,64px"></x-import>
 
   <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
@@ -148,7 +148,7 @@
       <p style="margin:0; font-family:var(--font-body); font-size:var(--text-md); color:var(--text-secondary); max-width:760px; line-height:var(--leading-relaxed);">We are currently recruiting highly motivated researchers and students, including joint graduate program students, contract researchers, and trainee/practicum students. If you are interested, please get in touch.</p>
 
       <div style="margin-top:8px;">
-        <a href="contact.dc.html" style="white-space:nowrap;"><x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Button" variant="accent" hint-size="160px,44px">Contact me</x-import></a>
+        <a href="contact.html" style="white-space:nowrap;"><x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Button" variant="accent" hint-size="160px,44px">Contact me</x-import></a>
       </div>
     </section>
 
@@ -164,13 +164,13 @@ class Component extends DCLogic {
   renderVals() {
     return {
       navLinks: [
-        { label: 'Home', href: 'index.dc.html' },
-        { label: 'Research', href: 'research.dc.html' },
-        { label: 'Members', href: 'members.dc.html' },
-        { label: 'Publication', href: 'publication.dc.html' },
-        { label: 'Presentation', href: 'presentation.dc.html' },
-        { label: 'News', href: 'news.dc.html' },
-        { label: 'Contact', href: 'contact.dc.html' },
+        { label: 'Home', href: 'index.html' },
+        { label: 'Research', href: 'research.html' },
+        { label: 'Members', href: 'members.html' },
+        { label: 'Publication', href: 'publication.html' },
+        { label: 'Presentation', href: 'presentation.html' },
+        { label: 'News', href: 'news.html' },
+        { label: 'Contact', href: 'contact.html' },
       ],
       members: [
         { photoId: 'member-hb', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Machine learning force field, generative AI for materials discovery', email: 'hgbak@kicet.re.kr' },
