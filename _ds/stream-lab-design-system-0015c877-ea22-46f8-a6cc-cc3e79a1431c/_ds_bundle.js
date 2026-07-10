@@ -1585,7 +1585,8 @@ function NavBar({
   brand = 'STREAM Lab',
   links = [],
   activeHref,
-  logoSrc
+  logoSrc,
+  brandHref = 'index.html'
 }) {
   const [open, setOpen] = useState(false);
   const linkStyle = l => ({
@@ -1624,7 +1625,8 @@ function NavBar({
       gap: 'var(--space-3)',
       flexShrink: 0
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: brandHref,
     style: {
       width: '36px',
       height: '36px',
@@ -1651,7 +1653,7 @@ function NavBar({
       flexShrink: 0
     }
   })), /*#__PURE__*/React.createElement("a", {
-    href: "#",
+    href: "brandHref",
     style: {
       fontFamily: 'var(--font-display)',
       fontWeight: 'var(--weight-bold)',
