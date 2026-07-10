@@ -1584,7 +1584,8 @@ const {
 function NavBar({
   brand = 'STREAM Lab',
   links = [],
-  activeHref
+  activeHref,
+  brandHref = 'index.html'
 }) {
   const [open, setOpen] = useState(false);
   return /*#__PURE__*/React.createElement("header", {
@@ -1624,7 +1625,7 @@ function NavBar({
       flexShrink: 0
     }
   }), /*#__PURE__*/React.createElement("a", {
-    href: "#",
+    href: brandHref,
     style: {
       fontFamily: 'var(--font-display)',
       fontWeight: 'var(--weight-bold)',
