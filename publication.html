@@ -7,7 +7,6 @@
 </head>
 <body>
 <x-dc>
-
 <helmet>
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/colors.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/typography.css">
@@ -22,9 +21,9 @@
   </style>
 </helmet>
 
-<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
+<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);" data-screen-label="Publication">
 
-  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="publication.html" hint-size="100%,64px"></x-import>
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="publication.html" brand-href="index.html" hint-size="100%,64px"></x-import>
 
   <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
@@ -128,57 +127,6 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const FIELD_STYLE = {
-  'First-principles calculation': { bg: 'var(--blue-100)', color: 'var(--brand-primary)' },
-  'Machine learning potential': { bg: 'var(--fog-100)', color: 'var(--fog-700)' },
-  'Multi-scale simulation': { bg: 'var(--sage-100)', color: 'var(--sage-600)' },
-  'Generative AI for materials': { bg: 'var(--gold-200)', color: 'var(--gold-700)' },
-};
-
-// Current lab members whose author-list occurrences should be bolded + underlined by default.
-const LAB_MEMBER_REGEX = /(Jung, J\.?|Bak, H\.?|Ahn, H\.?)/g;
-
-function escapeRegex(s) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-// Same-name authors can belong to different people across papers, so bolding is
-// resolved per paper rather than by one blanket rule:
-//  - `highlightOverride: ['Jung, J.\u2020']` on a paper replaces the default regex
-//    entirely for that paper — only these exact author strings get bolded.
-//  - `excludeHighlight: ['Jung, J.']` keeps the default regex but un-bolds specific
-//    matches (use when a match is actually a namesake, not the lab member).
-function splitAuthors(str, { highlightOverride, excludeHighlight, excludeHighlightIndex } = {}) {
-  const parts = [];
-  let last = 0;
-  let m;
-  let matchIdx = 0;
-  const regex = highlightOverride && highlightOverride.length
-    ? new RegExp('(' + highlightOverride.map(escapeRegex).join('|') + ')', 'g')
-    : LAB_MEMBER_REGEX;
-  regex.lastIndex = 0;
-  while ((m = regex.exec(str))) {
-    if (m.index > last) parts.push({ text: str.slice(last, m.index), bold: false, plain: true });
-    const isExcludedByName = !highlightOverride && excludeHighlight && excludeHighlight.includes(m[0]);
-    const isExcludedByIndex = excludeHighlightIndex && excludeHighlightIndex.includes(matchIdx);
-    const isExcluded = isExcludedByName || isExcludedByIndex;
-    parts.push({ text: m[0], bold: !isExcluded, plain: isExcluded });
-    matchIdx += 1;
-    last = m.index + m[0].length;
-  }
-  if (last < str.length) parts.push({ text: str.slice(last), bold: false, plain: true });
-  return parts;
-}
-
-function withComputedFields(items) {
-  return items.map(it => ({
-    ...it,
-    fieldsStyled: it.fields.map(f => ({ label: f, bg: FIELD_STYLE[f].bg, color: FIELD_STYLE[f].color })),
-    authorParts: splitAuthors(it.authors, { highlightOverride: it.highlightOverride, excludeHighlight: it.excludeHighlight, excludeHighlightIndex: it.excludeHighlightIndex }),
-    doiUrl: it.doi ? `https://doi.org/${it.doi}` : '',
-  }));
-}
-
 class Component extends DCLogic {
   state = { activeTopics: [], rawGroups: null };
 
@@ -200,15 +148,15 @@ class Component extends DCLogic {
     const rawGroups = this.state.rawGroups || [];
 
     // Cumulative numbering starting at 1 for the oldest paper, counting forward
-    // (mutates shared item objects, so both the reversed pass below and rawGroups see the result)
     let counter = 0;
     rawGroups.slice().reverse().forEach(g => { g.items.slice().reverse().forEach(it => { counter += 1; it.num = counter; }); });
 
-    const { activeTopics } = this.state;
+    const { activeTopics, withComputedFields } = this.state;
+    const FIELD_STYLE = this.state.rawGroups ? null : null;
     const anyFilterActive = activeTopics.length > 0;
     const paperGroups = rawGroups
       .map(g => {
-        const items = withComputedFields(g.items).filter(it => {
+        const items = (withComputedFields ? withComputedFields(g.items) : []).filter(it => {
           if (!anyFilterActive) return true;
           return it.fields.some(f => activeTopics.includes(f));
         });
@@ -216,9 +164,16 @@ class Component extends DCLogic {
       })
       .filter(g => g.items.length > 0);
 
-    const topicFilters = Object.keys(FIELD_STYLE).map(label => {
+    const fieldStyleKeys = ['First-principles calculation', 'Machine learning potential', 'Multi-scale simulation', 'Generative AI for materials'];
+    const FIELD_COLORS = {
+      'First-principles calculation': { bg: 'var(--blue-100)', color: 'var(--brand-primary)' },
+      'Machine learning potential': { bg: 'var(--fog-100)', color: 'var(--fog-700)' },
+      'Multi-scale simulation': { bg: 'var(--sage-100)', color: 'var(--sage-600)' },
+      'Generative AI for materials': { bg: 'var(--gold-200)', color: 'var(--gold-700)' },
+    };
+    const topicFilters = fieldStyleKeys.map(label => {
       const active = activeTopics.includes(label);
-      const style = FIELD_STYLE[label];
+      const style = FIELD_COLORS[label];
       return {
         label,
         bg: active ? style.color : style.bg,
