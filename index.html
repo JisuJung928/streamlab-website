@@ -103,9 +103,34 @@
         <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Recent Publications</h2>
         <a href="publication.html" style="font-family:var(--font-body); font-size:var(--text-sm); font-weight:600;">View all →</a>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; align-items:stretch;">
         <sc-for list="{{ publications }}" as="pub" hint-placeholder-count="3">
-          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.PublicationCard" title="{{ pub.title }}" authors="{{ pub.authors }}" venue="{{ pub.venue }}" year="{{ pub.year }}" tag="{{ pub.tag }}" image="{{ pub.image }}" hint-size="100%,220px"></x-import>
+          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" padded="{{ false }}" hint-size="100%,340px">
+            <div style="display:flex; flex-direction:column; height:100%;">
+              <div style="width:100%; aspect-ratio:16/9; background:var(--surface-sunken); flex-shrink:0;">
+                <image-slot id="{{ pub.imageId }}" shape="rect" fit="cover" placeholder="Drop a figure/thumbnail" style="width:100%; height:100%;"></image-slot>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:10px; padding:20px; flex:1;">
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <sc-for list="{{ pub.fieldsStyled }}" as="f" hint-placeholder-count="1">
+                    <span style="align-self:flex-start; font-family:var(--font-body); font-size:var(--text-2xs); font-weight:600; letter-spacing:var(--tracking-wide); text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:var(--radius-pill); background:{{ f.bg }}; color:{{ f.color }};">{{ f.label }}</span>
+                  </sc-for>
+                </div>
+                <h3 style="margin:0; font-family:var(--font-display); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);">{{ pub.title }}</h3>
+                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">
+                  <sc-for list="{{ pub.authorParts }}" as="ap" hint-placeholder-count="1">
+                    <sc-if value="{{ ap.bold }}" hint-placeholder-val="{{ false }}">
+                      <strong style="text-decoration:underline; color:var(--text-primary);">{{ ap.text }}</strong>
+                    </sc-if>
+                    <sc-if value="{{ ap.plain }}" hint-placeholder-val="{{ true }}">
+                      <span>{{ ap.text }}</span>
+                    </sc-if>
+                  </sc-for>
+                </p>
+                <p style="margin:0; margin-top:auto; font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">{{ pub.venue }} · {{ pub.year }}</p>
+              </div>
+            </div>
+          </x-import>
         </sc-for>
       </div>
     </section>
@@ -115,9 +140,20 @@
         <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Recent News</h2>
         <a href="news.html" style="font-family:var(--font-body); font-size:var(--text-sm); font-weight:600;">View all →</a>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; align-items:stretch;">
         <sc-for list="{{ newsItems }}" as="item" hint-placeholder-count="3">
-          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NewsCard" date="{{ item.date }}" title="{{ item.title }}" excerpt="{{ item.excerpt }}" image="{{ item.image }}" hint-size="100%,220px"></x-import>
+          <div style="background:var(--surface-card); border:1px solid var(--border-subtle); border-left:3px solid var(--brand-primary); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); overflow:hidden; display:flex; flex-direction:column; height:100%; transition:box-shadow var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard);" style-hover="box-shadow:var(--shadow-md); transform:translateY(-2px);">
+            <sc-if value="{{ item.hasImage }}" hint-placeholder-val="{{ true }}">
+              <div style="width:100%; aspect-ratio:16/9; background:var(--surface-sunken); flex-shrink:0;">
+                <image-slot id="{{ item.imageId }}" shape="rect" fit="cover" placeholder="Drop a photo" style="width:100%; height:100%;"></image-slot>
+              </div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:8px; padding:20px; flex:1;">
+              <span style="font-family:var(--font-mono); font-size:var(--text-2xs); color:var(--text-tertiary); letter-spacing:var(--tracking-wide);">{{ item.date }}</span>
+              <h3 style="margin:0; font-family:var(--font-display); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);">{{ item.title }}</h3>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-relaxed);">{{ item.excerpt }}</p>
+            </div>
+          </div>
         </sc-for>
       </div>
     </section>
@@ -140,7 +176,37 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+  state = { rawGroups: null };
+
+  async componentDidMount() {
+    const mod = await import('./publication-data.js');
+    this.setState({ rawGroups: mod.PUBLICATIONS, FIELD_STYLE: mod.FIELD_STYLE, splitAuthors: mod.splitAuthors, analyzeAuthorship: mod.analyzeAuthorship });
+  }
+
   renderVals() {
+    const { rawGroups, FIELD_STYLE, splitAuthors, analyzeAuthorship } = this.state;
+
+    // Recent Publications shows only papers where the PI (Jung, J.) is the
+    // first author, a co-first author, or a corresponding author — computed
+    // live from the same publication list used on publication.html, so this
+    // stays in sync automatically whenever that list is updated.
+    let publications = [];
+    if (rawGroups) {
+      const eligible = rawGroups
+        .filter(g => g.year !== 'Submitted')
+        .flatMap(g => g.items.map(it => ({ ...it, year: g.year })))
+        .filter(it => {
+          const { isFirstOrCoFirst, isCorresponding } = analyzeAuthorship(it);
+          return isFirstOrCoFirst || isCorresponding;
+        });
+      publications = eligible.slice(0, 3).map(p => ({
+        ...p,
+        fieldsStyled: p.fields.map(f => ({ label: f, bg: FIELD_STYLE[f].bg, color: FIELD_STYLE[f].color })),
+        authorParts: splitAuthors(p.authors, { highlightOverride: p.highlightOverride, excludeHighlight: p.excludeHighlight, excludeHighlightIndex: p.excludeHighlightIndex }),
+        imageId: `pub-${p.title.slice(0, 24)}`,
+      }));
+    }
+
     return {
       navLinks: [
         { label: 'Home', href: 'index.html' },
@@ -151,15 +217,11 @@ class Component extends DCLogic {
         { label: 'News', href: 'news.html' },
         { label: 'Contact', href: 'contact.html' },
       ],
-      publications: [
-        { tag: '2026', title: 'Are diffusion models ready for materials discovery in unexplored chemical space?', authors: 'Kim, S., Jeon, G., Hwang, S., Lee, J., Jung, J., Han, S. & Kang, S.', venue: 'Patterns 7, 101537', year: '2026', image: 'assets/pub-diffusion-2026.jpg' },
-        { tag: '2026', title: 'Reactive machine learning interatomic potentials for chemistry and materials science', authors: 'Kim, J., Cho, H., Jeon, H., Jung, J.* & Han, S.*', venue: 'Chemical Reviews 126, 4467\u20134510', year: '2026', image: 'assets/pub-reactive-mlip-2026.jpg' },
-        { tag: '2025', title: 'Nonmelting disordering facilitated by electron delocalization', authors: 'Kim, D., Kim, S., Jung, J., et al.', venue: 'ACS Nano 19, 9317\u20139326', year: '2025', image: 'assets/pub-nonmelting-2025.jpg' },
-      ],
+      publications,
       newsItems: [
-        { date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior — invited seminar at the Dept. of Materials Science and Engineering, Pukyong National University', image: 'assets/news-pnu-seminar.jpg' },
-        { date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'B.S. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!', image: 'assets/news-bak-join.jpg' },
-        { date: '2026.02.24', title: 'Seminar with Prof. Byungjo Kim (UNIST)', excerpt: 'Hosted a seminar titled "Leveraging Computational Science for Advanced Semiconductor Process Design"', image: 'assets/news-kim-seminar.jpg' },
+        { date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior — invited seminar at the Dept. of Materials Science and Engineering, Pukyong National University', hasImage: true, imageId: 'news-pnu-seminar' },
+        { date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'B.S. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!', hasImage: true, imageId: 'news-bak-join' },
+        { date: '2026.02.24', title: 'Seminar with Prof. Byungjo Kim (UNIST)', excerpt: 'Hosted a seminar titled "Leveraging Computational Science for Advanced Semiconductor Process Design"', hasImage: true, imageId: 'news-kim-seminar' },
       ],
     };
   }

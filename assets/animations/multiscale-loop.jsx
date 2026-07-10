@@ -164,10 +164,10 @@ function MultiscaleLoop({ size = 800 }) {
       <circle cx={px} cy={py} r={13} fill={BLUE_600} opacity={0.22} />
       <circle cx={px} cy={py} r={10} fill={BLUE_600} />
 
-      <text x={400} y={660} fontFamily={MONO_FONT} fontSize="20" fill={FOG_600} textAnchor="middle" opacity={vibLabelOp}>
+      <text x={400} y={670} fontFamily={MONO_FONT} fontSize="40" fontWeight="600" fill={FOG_600} textAnchor="middle" opacity={vibLabelOp}>
         local vibration — fs–ps
       </text>
-      <text x={400} y={660} fontFamily={MONO_FONT} fontSize="20" fill={FOG_600} textAnchor="middle" opacity={hopLabelOp}>
+      <text x={400} y={670} fontFamily={MONO_FONT} fontSize="40" fontWeight="600" fill={FOG_600} textAnchor="middle" opacity={hopLabelOp}>
         well-to-well hopping — ns–μs
       </text>
     </svg>

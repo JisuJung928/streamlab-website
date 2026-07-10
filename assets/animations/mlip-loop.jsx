@@ -102,8 +102,8 @@ function MLIPLoop({ size = 800 }) {
         const y = qy + 175 * Math.sin(a) * 0.55 - 40;
         return (
           <g key={label}>
-            <circle cx={x} cy={y} r={16} fill={BLUE_600} opacity={0.85} />
-            <text x={x} y={y + 6} fontFamily={MONO_FONT} fontSize="16" fill="#fff" textAnchor="middle">{label}</text>
+            <circle cx={x} cy={y} r={26} fill={BLUE_600} opacity={0.85} />
+            <text x={x} y={y + 9} fontFamily={MONO_FONT} fontSize="30" fontWeight="600" fill="#fff" textAnchor="middle">{label}</text>
           </g>
         );
       })}
@@ -142,8 +142,8 @@ function MLIPLoop({ size = 800 }) {
       {/* dashed arc guide */}
       <path d={`M ${start[0]} ${start[1]} Q ${ctrl[0]} ${ctrl[1]} ${end[0]} ${end[1]}`} fill="none" stroke={FOG_400} strokeWidth="1.5" strokeDasharray="2 6" />
 
-      <text x={210} y={575} fontFamily={MONO_FONT} fontSize="18" fill={FOG_600} textAnchor="middle">ab-initio</text>
-      <text x={610} y={575} fontFamily={MONO_FONT} fontSize="18" fill={FOG_600} textAnchor="middle">MLIP</text>
+      <text x={210} y={585} fontFamily={MONO_FONT} fontSize="42" fontWeight="600" fill={FOG_600} textAnchor="middle">ab-initio</text>
+      <text x={610} y={585} fontFamily={MONO_FONT} fontSize="42" fontWeight="600" fill={FOG_600} textAnchor="middle">MLIP</text>
     </svg>
   );
 }

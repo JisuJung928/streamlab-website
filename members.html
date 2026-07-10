@@ -43,7 +43,7 @@
       <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,460px">
         <div style="display:grid; grid-template-columns:300px 1fr 1fr; gap:32px;">
           <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
-            <img src="assets/pi-photo.jpg" alt="Jisu Jung" style="width:260px; height:260px; object-fit:cover; border-radius:16px; display:block; background:var(--blue-100);">
+            <img src="assets/pi-photo.jpg" alt="Jisu Jung" style="width:260px; height:260px; object-fit:contain; border-radius:16px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
             <div>
               <h3 style="font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary); margin:0 0 4px;">Jisu Jung</h3>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">Senior Researcher</p>
@@ -110,7 +110,7 @@
         <sc-for list="{{ members }}" as="m" hint-placeholder-count="2">
           <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
             <div style="display:flex; flex-direction:column; gap:14px;">
-              <img src="assets/{{ m.photoId }}.jpg" alt="{{ m.name }}" style="width:100%; height:180px; object-fit:cover; border-radius:14px; display:block; background:var(--blue-100);">
+              <img src="{{ m.photoSrc }}" alt="{{ m.name }}" style="width:100%; height:240px; object-fit:contain; border-radius:14px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
               <div>
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ m.name }}</p>
               </div>
@@ -129,7 +129,7 @@
         <sc-for list="{{ alumni }}" as="a" hint-placeholder-count="2">
           <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
             <div style="display:flex; flex-direction:column; gap:14px;">
-              <img src="assets/{{ a.photoId }}.jpg" alt="{{ a.name }}" style="width:100%; height:180px; object-fit:cover; border-radius:14px; display:block; background:var(--blue-100);">
+              <img src="{{ a.photoSrc }}" alt="{{ a.name }}" style="width:100%; height:240px; object-fit:contain; border-radius:14px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
               <div>
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ a.name }}</p>
                 <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">{{ a.affiliation }}</p>
@@ -162,6 +162,7 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
+    const withPhotoSrc = (list) => list.map(it => ({ ...it, photoSrc: `assets/${it.photoId}.${it.photoExt}` }));
     return {
       navLinks: [
         { label: 'Home', href: 'index.html' },
@@ -172,13 +173,14 @@ class Component extends DCLogic {
         { label: 'News', href: 'news.html' },
         { label: 'Contact', href: 'contact.html' },
       ],
-      members: [
-        { photoId: 'hyeongeun_bak', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory', email: 'rms1016@naver.com' },
-        { photoId: 'hyeonseung_ahn', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI (Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
-      ],
-      alumni: [
-        { photoId: 'yeojin_kim', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2026.03' },
-      ],
+      members: withPhotoSrc([
+        // photoExt: set to whatever the actual file in assets/ is ('jpg' or 'png') — both supported.
+        { photoId: 'hyeongeun_bak', photoExt: 'jpg', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory', email: 'rms1016@naver.com' },
+        { photoId: 'hyeonseung_ahn', photoExt: 'png', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI (Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
+      ]),
+      alumni: withPhotoSrc([
+        { photoId: 'yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2026.03' },
+      ]),
     };
   }
 }

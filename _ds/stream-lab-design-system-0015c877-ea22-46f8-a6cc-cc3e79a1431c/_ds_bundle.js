@@ -1584,8 +1584,7 @@ const {
 function NavBar({
   brand = 'STREAM Lab',
   links = [],
-  activeHref,
-  logo = 'assets/logo.png'
+  activeHref
 }) {
   const [open, setOpen] = useState(false);
   return /*#__PURE__*/React.createElement("header", {
@@ -1613,29 +1612,18 @@ function NavBar({
       gap: 'var(--space-3)',
       flexShrink: 0
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, React.createElement('image-slot', {
+    id: 'nav-logo',
+    shape: 'rect',
+    fit: 'contain',
+    placeholder: 'Logo',
     style: {
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%',
-      background: '#fff',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      overflow: 'hidden'
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: logo,
-    alt: brand + ' logo',
-    style: {
-      width: '26px',
-      height: '26px',
-      objectFit: 'contain',
-      display: 'block',
+      width: '32px',
+      height: '32px',
+      background: 'transparent',
       flexShrink: 0
     }
-  })), /*#__PURE__*/React.createElement("a", {
+  }), /*#__PURE__*/React.createElement("a", {
     href: "#",
     style: {
       fontFamily: 'var(--font-display)',
