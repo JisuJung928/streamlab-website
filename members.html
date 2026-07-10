@@ -43,7 +43,7 @@
       <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,460px">
         <div style="display:grid; grid-template-columns:300px 1fr 1fr; gap:32px;">
           <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
-            <img src="assets/pi-photo.jpg" alt="Jisu Jung" style="width:260px; height:260px; object-fit:contain; border-radius:16px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
+            <img src="assets/member_jisu_jung.jpg" alt="Jisu Jung" style="width:260px; height:260px; object-fit:contain; border-radius:16px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
             <div>
               <h3 style="font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary); margin:0 0 4px;">Jisu Jung</h3>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">Senior Researcher</p>
@@ -175,11 +175,11 @@ class Component extends DCLogic {
       ],
       members: withPhotoSrc([
         // photoExt: set to whatever the actual file in assets/ is ('jpg' or 'png') — both supported.
-        { photoId: 'hyeongeun_bak', photoExt: 'jpg', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory', email: 'rms1016@naver.com' },
-        { photoId: 'hyeonseung_ahn', photoExt: 'png', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI (Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
+        { photoId: 'member_hyeongeun_bak', photoExt: 'jpg', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory', email: 'rms1016@naver.com' },
+        { photoId: 'member_hyeonseung_ahn', photoExt: 'png', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI \n(Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
       ]),
       alumni: withPhotoSrc([
-        { photoId: 'yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2026.03' },
+        { photoId: 'member_yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2026.03' },
       ]),
     };
   }
