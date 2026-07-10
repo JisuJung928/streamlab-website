@@ -1585,9 +1585,19 @@ function NavBar({
   brand = 'STREAM Lab',
   links = [],
   activeHref,
-  brandHref = 'index.html'
+  logoSrc
 }) {
   const [open, setOpen] = useState(false);
+  const linkStyle = l => ({
+    fontFamily: 'var(--font-body)',
+    fontSize: 'var(--text-sm)',
+    fontWeight: 'var(--weight-medium)',
+    color: l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)',
+    textDecoration: 'none',
+    paddingBottom: '4px',
+    borderBottom: l.href === activeHref ? '2px solid var(--blue-500)' : '2px solid transparent',
+    transition: 'color var(--duration-fast) var(--ease-standard)'
+  });
   return /*#__PURE__*/React.createElement("header", {
     style: {
       position: 'sticky',
@@ -1605,7 +1615,8 @@ function NavBar({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between'
-    }
+    },
+    className: 'container-px'
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -1613,19 +1624,34 @@ function NavBar({
       gap: 'var(--space-3)',
       flexShrink: 0
     }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '36px',
+      height: '36px',
+      borderRadius: '50%',
+      background: '#ffffff',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      boxSizing: 'border-box',
+      padding: '5px',
+      boxShadow: '0 1px 2px rgba(0,23,61,0.25)'
+    }
   }, React.createElement('image-slot', {
     id: 'nav-logo',
+    src: logoSrc,
     shape: 'rect',
     fit: 'contain',
     placeholder: 'Logo',
     style: {
-      width: '32px',
-      height: '32px',
+      width: '100%',
+      height: '100%',
       background: 'transparent',
       flexShrink: 0
     }
-  }), /*#__PURE__*/React.createElement("a", {
-    href: brandHref,
+  })), /*#__PURE__*/React.createElement("a", {
+    href: "#",
     style: {
       fontFamily: 'var(--font-display)',
       fontWeight: 'var(--weight-bold)',
@@ -1637,6 +1663,7 @@ function NavBar({
       flexShrink: 0
     }
   }, brand)), /*#__PURE__*/React.createElement("nav", {
+    className: 'nav-links-desktop',
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1645,23 +1672,60 @@ function NavBar({
   }, links.map(l => /*#__PURE__*/React.createElement("a", {
     key: l.href,
     href: l.href,
-    style: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 'var(--text-sm)',
-      fontWeight: 'var(--weight-medium)',
-      color: l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)',
-      textDecoration: 'none',
-      paddingBottom: '4px',
-      borderBottom: l.href === activeHref ? '2px solid var(--blue-500)' : '2px solid transparent',
-      transition: 'color var(--duration-fast) var(--ease-standard)'
-    },
+    style: linkStyle(l),
     onMouseEnter: e => {
       e.currentTarget.style.color = 'var(--text-on-inverse)';
     },
     onMouseLeave: e => {
       e.currentTarget.style.color = l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)';
     }
-  }, l.label)))));
+  }, l.label))), /*#__PURE__*/React.createElement("button", {
+    type: 'button',
+    className: 'nav-toggle-btn',
+    'aria-label': open ? 'Close menu' : 'Open menu',
+    onClick: () => setOpen(o => !o),
+    style: {
+      display: 'none',
+      width: '36px',
+      height: '36px',
+      flexShrink: 0,
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      gap: '5px',
+      padding: 0
+    }
+  }, [0, 1, 2].map(i => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    style: {
+      display: 'block',
+      width: '22px',
+      height: '2px',
+      background: 'var(--text-on-inverse)',
+      borderRadius: '1px',
+      transition: 'transform var(--duration-fast) var(--ease-standard), opacity var(--duration-fast) var(--ease-standard)',
+      transform: open && i === 0 ? 'translateY(7px) rotate(45deg)' : open && i === 2 ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      opacity: open && i === 1 ? 0 : 1
+    }
+  })))), open && /*#__PURE__*/React.createElement("nav", {
+    className: 'nav-mobile-panel',
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--space-1)',
+      padding: 'var(--space-3) var(--container-pad) var(--space-5)',
+      background: 'var(--surface-inverse)',
+      borderTop: '1px solid rgba(255,255,255,0.08)'
+    }
+  }, links.map(l => /*#__PURE__*/React.createElement("a", {
+    key: l.href,
+    href: l.href,
+    onClick: () => setOpen(false),
+    style: { ...linkStyle(l), padding: 'var(--space-3) 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }
+  }, l.label))));
 }
 Object.assign(__ds_scope, { NavBar });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/NavBar.jsx", error: String((e && e.message) || e) }); }

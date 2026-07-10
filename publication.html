@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <link rel="stylesheet" href="responsive.css">
   <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
   <style>
     a { color: var(--link); text-decoration: none; }
@@ -23,19 +24,19 @@
 
 <div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);" data-screen-label="Publication">
 
-  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="publication.html" brand-href="index.html" hint-size="100%,64px"></x-import>
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="publication.html" brand-href="index.html" logo-src="assets/logo.png" hint-size="100%,64px"></x-import>
 
-  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+  <section class="hero-pad-sm container-px" style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
       <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
     </div>
     <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
     <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
-      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Publication</h1>
+      <h1 class="hero-title-3xl" style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Publication</h1>
     </div>
   </section>
 
-  <main style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:56px;">
+  <main class="container-px" style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:56px;">
 
     <section style="display:flex; flex-direction:column; gap:20px;">
       <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,340px">
@@ -147,12 +148,10 @@ class Component extends DCLogic {
   renderVals() {
     const rawGroups = this.state.rawGroups || [];
 
-    // Cumulative numbering starting at 1 for the oldest paper, counting forward
     let counter = 0;
     rawGroups.slice().reverse().forEach(g => { g.items.slice().reverse().forEach(it => { counter += 1; it.num = counter; }); });
 
     const { activeTopics, withComputedFields } = this.state;
-    const FIELD_STYLE = this.state.rawGroups ? null : null;
     const anyFilterActive = activeTopics.length > 0;
     const paperGroups = rawGroups
       .map(g => {
@@ -182,8 +181,6 @@ class Component extends DCLogic {
       };
     });
 
-    // Cumulative-by-year chart — derived directly from rawGroups (excludes "Submitted"),
-    // so it stays in sync automatically whenever the publication list below is updated.
     const yearCounts = rawGroups
       .filter(g => g.year !== 'Submitted')
       .map(g => ({ year: g.year, count: g.items.length }))

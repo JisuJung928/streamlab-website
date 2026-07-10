@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <link rel="stylesheet" href="responsive.css">
   <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
   <style>
     a { color: var(--link); text-decoration: none; }
@@ -23,25 +24,25 @@
 
 <div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);" data-screen-label="News">
 
-  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="news.html" brand-href="index.html" hint-size="100%,64px"></x-import>
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="news.html" brand-href="index.html" logo-src="assets/logo.png" hint-size="100%,64px"></x-import>
 
-  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+  <section class="hero-pad-sm container-px" style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
       <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
     </div>
     <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
     <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
-      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">News</h1>
+      <h1 class="hero-title-3xl" style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">News</h1>
     </div>
   </section>
 
-  <main style="max-width:900px; margin:0 auto; padding:64px 48px;">
+  <main class="container-px" style="max-width:900px; margin:0 auto; padding:64px 48px;">
     <div style="position:relative; display:flex; flex-direction:column; gap:0;">
-      <div style="position:absolute; left:113px; top:8px; bottom:8px; width:2px; background:var(--border-subtle);"></div>
+      <div class="news-rail" style="position:absolute; left:113px; top:8px; bottom:8px; width:2px; background:var(--border-subtle);"></div>
       <sc-for list="{{ newsItems }}" as="item" hint-placeholder-count="6">
-        <div style="position:relative; display:grid; grid-template-columns:96px 36px 1fr; gap:0; padding:22px 0;">
-          <span style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); padding-top:2px;">{{ item.date }}</span>
-          <div style="display:flex; justify-content:center;">
+        <div class="news-row" style="position:relative; display:grid; grid-template-columns:96px 36px 1fr; gap:0; padding:22px 0;">
+          <span class="news-date-col" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); padding-top:2px;">{{ item.date }}</span>
+          <div class="news-dot-col" style="display:flex; justify-content:center;">
             <div style="width:12px; height:12px; border-radius:50%; background:var(--brand-primary); border:2px solid var(--surface-page); box-shadow:0 0 0 2px var(--border-default); margin-top:4px;"></div>
           </div>
           <div style="display:flex; flex-direction:column; gap:8px;">
@@ -90,7 +91,7 @@ class Component extends DCLogic {
 
     const newsItems = (newsRaw || []).map(n => ({
       ...n,
-      hasImage: !!n.imageId,
+      hasImage: !!n.imageSrc,
       hasLink: !!n.link,
       linkThumbnail: n.link && linkThumbnailUrl ? linkThumbnailUrl(n.link) : '',
       linkDomain: n.link && linkDomain ? linkDomain(n.link) : '',

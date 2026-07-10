@@ -1,0 +1,66 @@
+/* STREAM Lab site — shared responsive breakpoints.
+   Inline styles set the desktop baseline; these rules override at
+   narrower widths (!important beats inline style specificity). */
+
+/* ---------- Nav ---------- */
+@media (max-width: 767px) {
+  .nav-links-desktop { display: none !important; }
+  .nav-toggle-btn { display: flex !important; }
+}
+@media (min-width: 768px) {
+  .nav-toggle-btn { display: none !important; }
+  .nav-mobile-panel { display: none !important; }
+}
+
+/* ---------- Page container / hero ---------- */
+@media (max-width: 640px) {
+  .container-px { padding-left: 20px !important; padding-right: 20px !important; }
+  .hero-pad-lg { padding-top: 84px !important; padding-bottom: 40px !important; }
+  .hero-pad-sm { padding-top: 52px !important; padding-bottom: 28px !important; }
+  .hero-title-xl { font-size: 34px !important; }
+  .hero-title-3xl { font-size: 28px !important; }
+  .hero-sub { font-size: 15px !important; }
+  .section-stack { gap: 48px !important; }
+  .hero-actions { flex-direction: column !important; align-items: stretch !important; }
+}
+
+/* ---------- Grids ---------- */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-3 { grid-template-columns: 1fr !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .pi-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: 1fr !important; }
+}
+
+/* ---------- Members PI card ---------- */
+@media (max-width: 900px) {
+  .pi-photo-col { align-items: center !important; text-align: center; }
+  .pi-photo-col img { margin: 0 auto; }
+}
+
+/* ---------- Presentation rows ---------- */
+@media (max-width: 640px) {
+  .talk-row { flex-direction: column !important; gap: 8px !important; }
+  .talk-year { width: auto !important; }
+}
+
+/* ---------- News timeline ---------- */
+@media (max-width: 640px) {
+  .news-row { grid-template-columns: 1fr !important; gap: 4px !important; padding: 18px 0 !important; }
+  .news-date-col, .news-dot-col { display: none !important; }
+  .news-rail { display: none !important; }
+}
+
+/* ---------- Research page rows ---------- */
+@media (max-width: 720px) {
+  .research-row { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .research-icon { width: 160px !important; height: 160px !important; }
+}
+
+/* ---------- Contact map / card ---------- */
+@media (max-width: 900px) {
+  .contact-map { min-height: 240px !important; }
+}

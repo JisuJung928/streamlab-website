@@ -7,13 +7,13 @@
 </head>
 <body>
 <x-dc>
-
 <helmet>
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/colors.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/typography.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/tokens/spacing.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/base.css">
   <link rel="stylesheet" href="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/styles.css">
+  <link rel="stylesheet" href="responsive.css">
   <script src="_ds/stream-lab-design-system-0015c877-ea22-46f8-a6cc-cc3e79a1431c/_ds_bundle.js"></script>
   <style>
     a { color: var(--link); text-decoration: none; }
@@ -22,23 +22,23 @@
   </style>
 </helmet>
 
-<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);">
+<div style="background:var(--surface-page); min-height:100vh; font-family:var(--font-body);" data-screen-label="Contact">
 
-  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="contact.html" hint-size="100%,64px"></x-import>
+  <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="contact.html" brand-href="index.html" logo-src="assets/logo.png" hint-size="100%,64px"></x-import>
 
-  <section style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
+  <section class="hero-pad-sm container-px" style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
       <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
     </div>
     <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
     <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
-      <h1 style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Contact</h1>
+      <h1 class="hero-title-3xl" style="font-family:var(--font-display); font-weight:700; font-size:var(--text-3xl); color:#fff; margin:0;">Contact</h1>
     </div>
   </section>
 
-  <main style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:48px;">
+  <main class="container-px" style="max-width:1240px; margin:0 auto; padding:64px 48px; display:flex; flex-direction:column; gap:48px;">
 
-    <section style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+    <section class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
       <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,320px">
         <div style="display:flex; flex-direction:column; gap:20px;">
           <h2 style="margin:0; font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary);">Korea Institute of Ceramic Engineering &amp; Technology</h2>
@@ -70,7 +70,7 @@
         </div>
       </x-import>
 
-      <div style="position:relative; width:100%; min-height:320px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
+      <div class="contact-map" style="position:relative; width:100%; min-height:320px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
         <iframe title="KICET location map" src="https://www.google.com/maps?q=Korea+Institute+of+Ceramic+Engineering+and+Technology,+Jinju&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>

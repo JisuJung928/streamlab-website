@@ -8,11 +8,12 @@
 // replaces the old global-regex approach — nothing is auto-bolded, so
 // duplicate/namesake names on different papers are never mixed up.
 //
-// Attach a photo to a paper by giving it a `photoId` — any string you like,
-// just keep it stable. Drop the figure onto that paper's thumbnail on the
-// Publication page and it will also show up automatically wherever that
-// paper appears (e.g. the Recent Publications preview on the homepage),
-// since both pages key their <image-slot> off the same photoId.
+// Attach a photo to a paper by giving it a `photoId` (a stable key string)
+// AND an explicit `photoSrc` pointing at the real file in assets/,
+// extension included (e.g. 'assets/paper_foo.jpeg'). Both pages key their
+// <image-slot> off the same photoId, so the figure shows up automatically
+// wherever that paper appears (e.g. the Recent Publications preview on the
+// homepage). Papers with no figure yet simply omit `photoSrc`.
 
 export const FIELD_STYLE = {
   'First-principles calculation': { bg: 'var(--blue-100)', color: 'var(--brand-primary)' },
@@ -90,17 +91,17 @@ export const PUBLICATIONS = [
     { photoId: 'pub-kim-nonmelting', photoSrc: 'assets/paper_kim_nonmelting.jpeg', fields: ['First-principles calculation'], title: 'Nonmelting disordering facilitated by electron delocalization', authors: 'Kim, D.\u2020, Kim, S.\u2020, **Jung, J.\u2020**, Kim, J., Choi, S., Sch\u00f6n, C.-F., Lee, C., Lim, H., Jeong, J., Yu, S., Jeong, Y., Lee, H., Kim, S., Nam, D., Eom, I., Jang, D., Kim, K. S., Im, S., Han, S.*, Kim, H.*, & Cho, M.-H.*', venue: 'ACS Nano 19, 9317\u20139326', doi: '10.1021/acsnano.5c00755' },
   ]},
   { year: '2024', items: [
-    { photoId: 'pub-jung-modified', photoSrc: 'assets/paper_jung_modified.jpeg', fields: ['Multi-scale simulation'], title: 'Modified activation-relaxation technique (ARTn) method tuned for efficient identification of transition states in surface reactions', authors: '**Jung, J.**, An, H., Lee, J. & Han, S.*', venue: 'J. Chem. Theory Comput. 20, 8024', doi: '10.1021/acs.jctc.4c00767' },
-    { photoId: 'pub-li-diffusion', fields: ['Machine learning potential', 'Multi-scale simulation'], title: 'Disorder-dependent Li diffusion in Li6PS5Cl investigated by machine learning potential', authors: 'Lee, J.\u2020, Ju, S.\u2020, Hwang, S., You, J., **Jung, J.**, Kang, Y.* & Han, S.*', venue: 'ACS Appl. Mater. Interface 16, 46442', doi: '10.1021/acsami.4c08865' },
-    { photoId: 'pub-melting-temp', fields: ['Generative AI for materials', 'Machine learning potential'], title: 'Predicting melting temperature of inorganic crystals via crystal graph neural network enhanced by transfer learning', authors: 'Kim, J.\u2020, **Jung, J.\u2020**, Kim, S. & Han, S.*', venue: 'Comput. Mater. Sci. 234, 112783', doi: '10.1016/j.commatsci.2024.112783' },
+    { photoId: 'pub-jung-modified', photoSrc: 'assets/paper_jung_modified.jpeg', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Modified activation-relaxation technique (ARTn) method tuned for efficient identification of transition states in surface reactions', authors: '**Jung, J.**, An, H., Lee, J. & Han, S.*', venue: 'J. Chem. Theory Comput. 20, 8024', doi: '10.1021/acs.jctc.4c00767' },
+    { photoId: 'pub-li-diffusion', fields: ['Machine learning potential'], title: 'Disorder-dependent Li diffusion in Li6PS5Cl investigated by machine learning potential', authors: 'Lee, J.\u2020, Ju, S.\u2020, Hwang, S., You, J., **Jung, J.**, Kang, Y.* & Han, S.*', venue: 'ACS Appl. Mater. Interface 16, 46442', doi: '10.1021/acsami.4c08865' },
+    { photoId: 'pub-melting-temp', fields: [], title: 'Predicting melting temperature of inorganic crystals via crystal graph neural network enhanced by transfer learning', authors: 'Kim, J.\u2020, **Jung, J.\u2020**, Kim, S. & Han, S.*', venue: 'Comput. Mater. Sci. 234, 112783', doi: '10.1016/j.commatsci.2024.112783' },
   ]},
   { year: '2023', items: [
     { photoId: 'pub-pt3co-degradation', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Electrochemical degradation of Pt3Co nanoparticles investigated by off-lattice kinetic Monte Carlo simulations with machine-learned potentials', authors: '**Jung, J.\u2020**, Ju, S.\u2020, Kim, P.-H., Hong, D., Jeong, W., Lee, J., Han, S.* & Kang, S.*', venue: 'ACS Catal. 13, 16078\u201316087', doi: '10.1021/acscatal.3c04964' },
     { photoId: 'pub-mlp-applications', fields: ['Machine learning potential'], title: 'Applications and training sets of machine learning potentials', authors: 'Hong, C.\u2020, Kim, J.\u2020, Kim, J., **Jung, J.**, Ju, S., Choi, J. M. & Han, S.*', venue: 'Sci. Technol. Adv. Mater.: Methods 3, 2269948', doi: '10.1080/27660400.2023.2269948' },
-    { photoId: 'pub-ternary-oxides', fields: ['Machine learning potential', 'First-principles calculation'], title: 'Stability and equilibrium structures of unknown ternary metal oxides explored by machine-learned potentials', authors: 'Hwang, S., **Jung, J.**, Hong, C., Jeong, W., Kang, S.* & Han, S.*', venue: 'J. Am. Chem. Soc. 145, 19378\u201319386 \u2014 Supplementary cover', doi: '10.1021/jacs.3c06210' },
+    { photoId: 'pub-ternary-oxides', fields: ['Machine learning potential'], title: 'Stability and equilibrium structures of unknown ternary metal oxides explored by machine-learned potentials', authors: 'Hwang, S., **Jung, J.**, Hong, C., Jeong, W., Kang, S.* & Han, S.*', venue: 'J. Am. Chem. Soc. 145, 19378\u201319386 \u2014 Supplementary cover', doi: '10.1021/jacs.3c06210' },
   ]},
   { year: '2022', items: [
-    { photoId: 'pub-tin-ald', fields: ['Multi-scale simulation'], title: 'Atomistic kinetic Monte Carlo simulation on atomic layer deposition of TiN thin film', authors: 'Kim, S., An, H., Oh, S., **Jung, J.**, Kim, B., Nam, S. K. & Han, S.*', venue: 'Comput. Mater. Sci. 231, 111620', doi: '10.1016/j.commatsci.2022.111620' },
+    { photoId: 'pub-tin-ald', fields: ['Multi-scale simulation', 'First-principles calculation'], title: 'Atomistic kinetic Monte Carlo simulation on atomic layer deposition of TiN thin film', authors: 'Kim, S., An, H., Oh, S., **Jung, J.**, Kim, B., Nam, S. K. & Han, S.*', venue: 'Comput. Mater. Sci. 231, 111620', doi: '10.1016/j.commatsci.2022.111620' },
   ]},
   { year: '2021', items: [
     { photoId: 'pub-metadynamics', fields: ['Machine learning potential'], title: 'Metadynamics sampling in atomic environment space for collecting training data for machine learning potentials', authors: 'Yoo, D.\u2020, **Jung, J.\u2020**, Jeong, W. & Han, S.*', venue: 'npj Comput. Mater. 7, 131', doi: '10.1038/s41524-021-00595-5' },
