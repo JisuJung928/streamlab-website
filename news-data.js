@@ -10,13 +10,13 @@
 // card renders under the item with a live thumbnail of that page.
 
 export const NEWS_ITEMS = [
-  { id: 'pnu-seminar', date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior analysis — invited seminar at the Dept. of Materials Science and Engineering, Pusan National University', imageId: 'news-pnu-seminar', link: 'https://streamlab.re.kr' },
-  { id: 'bak-join', date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'B.S. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!', imageId: 'news-bak-join' },
+  { id: 'pnu-seminar', date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior analysis — invited seminar at the Dept. of Materials Science and Engineering, Pusan National University', imageId: 'assets/news_pnu' },
+  { id: 'bak-join', date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'Mr. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!' },
   { id: 'kim-seminar', date: '2026.02.24', title: 'Seminar with Prof. Byungjo Kim (UNIST)', excerpt: 'Prof. Byungjo Kim presented a seminar titled "Leveraging Computational Science for Advanced Semiconductor Process Design" at KICET. Thanks!', imageId: 'news-byungjo', imageSrc: 'assets/news_byungjo.jpg' },
   { id: 'kimms-symposium', date: '2026.01.22', title: 'Invited presentation at 2026 Computational Material Science Winter Symposium', excerpt: 'Korean Institute of Metals and Materials, Pohang (Korea), Jan. 23\u201325', imageId: 'news-kimms-symposium' },
   { id: 'ahn-trainee', date: '2026.01.05', title: '2026 Q1 Research Trainee', excerpt: 'Mr. Hyeonseung Ahn (UNIST) joined the lab as a research trainee for six months. Welcome!' },
   { id: 'kim-intern', date: '2025.11.03', title: '2025 Q3 Research Intern', excerpt: 'M.S. Yeojin Kim joined the lab as a research intern for a year. Welcome!' },
-  { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'news-beginning' },
+  { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'assets/hero-bg' , link: 'https://streamlab.kr'},
 ];
 
 // Builds a live thumbnail URL for a link preview card (via a public
