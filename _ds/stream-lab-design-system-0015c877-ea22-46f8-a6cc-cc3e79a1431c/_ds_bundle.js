@@ -1653,7 +1653,7 @@ function NavBar({
       flexShrink: 0
     }
   })), /*#__PURE__*/React.createElement("a", {
-    href: "brandHref",
+    href: brandHref,
     style: {
       fontFamily: 'var(--font-display)',
       fontWeight: 'var(--weight-bold)',
