@@ -13,7 +13,7 @@
 
 export const NEWS_ITEMS = [
   { id: 'jeong_mun-trainee', date: '2026.07.01', title: '2026 H2 Research Trainee', excerpt: 'M.S. Jae Min Jeong and Mr. Jeonghu Mun joined the lab as a research trainee. Welcome!' },
-  { id: 'mrs2026', date: '2026.04.26', title: 'Attendance at MRS 2026 Spring Meeting', excerpt: 'Ph.D. Jisu Jung attended MRS 2026 Spring Meeting @ Hawaii and presented recent researches', imageId: 'news-mrs2026', imageSrc: 'assets/news_mrs2026.jpeg'},
+  { id: 'mrs2026', date: '2026.04.26', title: 'MRS 2026 Spring Meeting', excerpt: 'Ph.D. Jisu Jung attended MRS 2026 Spring Meeting @ Hawaii and gave poster presentation', imageId: 'news-mrs2026', imageSrc: 'assets/news_mrs2026.jpeg'},
   { id: 'pnu-seminar', date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior analysis — invited seminar at the Dept. of Materials Science and Engineering, Pusan National University', imageId: 'news-pnu', imageSrc: 'assets/news_pnu.png'},
   { id: 'bak-join', date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'Mr. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!' },
   { id: 'kim-seminar', date: '2026.02.24', title: 'Seminar with Prof. Byungjo Kim (UNIST)', excerpt: 'Prof. Byungjo Kim presented a seminar titled "Leveraging Computational Science for Advanced Semiconductor Process Design" at KICET. Thanks!', imageId: 'news-byungjo', imageSrc: 'assets/news_byungjo.jpg' },
@@ -21,6 +21,7 @@ export const NEWS_ITEMS = [
   { id: 'media-interview', date: '2026.01.16', title: '2026 Q1 Media Highlight', excerpt: 'Demonstration of immersion cooling equipment', link: 'https://www.news1.kr/industry/general-industry/6041784'},
   { id: 'ahn-trainee', date: '2026.01.05', title: '2026 H1 Research Trainee', excerpt: 'Mr. Hyeonseung Ahn (UNIST) joined the lab as a research trainee for six months. Welcome!' },
   { id: 'kim-intern', date: '2025.11.03', title: '2025 Q3 Research Intern', excerpt: 'M.S. Yeojin Kim joined the lab as a research intern for a year. Welcome!' },
+  { id: 'jo_song-intern', date: '2025.07.01', title: '2025 Summer Co-op students', excerpt: 'Mr. Seongha Jo and Ms. Miryung Song joined the lab as a Co-op students for two months. Welcome!' },
   { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'news-beginning', imageSrc: 'assets/hero-bg.jpg' },
 ];
 
