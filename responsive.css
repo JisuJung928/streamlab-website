@@ -62,8 +62,12 @@
 }
 
 /* ---------- Publication cumulative chart ---------- */
+/* The SVG chart's axis text can't be sized independently of its own
+   viewBox scale, so on mobile it's swapped for a plain-HTML summary
+   (total + per-year bars) that isn't subject to that constraint. */
 @media (max-width: 640px) {
-  .pub-chart { aspect-ratio: 1100 / 460 !important; }
+  .pub-chart-svg { display: none !important; }
+  .pub-chart-summary { display: flex !important; }
 }
 
 /* ---------- Contact map / card ---------- */

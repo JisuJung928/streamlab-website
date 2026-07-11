@@ -45,7 +45,7 @@
             <h2 style="font-family:var(--font-display); font-size:var(--text-lg); color:var(--text-primary); margin:0;">Cumulative publications by year</h2>
             <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-tertiary);">{{ chartTotal }} papers total</span>
           </div>
-          <svg class="pub-chart" viewBox="0 0 1100 320" style="width:100%; height:auto; aspect-ratio:1100/320; overflow:visible;">
+          <svg class="pub-chart pub-chart-svg" viewBox="0 0 1100 320" style="width:100%; height:auto; aspect-ratio:1100/320; overflow:visible;">
             <defs>
               <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="var(--blue-600)" stop-opacity="0.28"></stop>
@@ -73,6 +73,24 @@
             <text x="568" y="293" font-family="var(--font-body)" font-size="16" font-weight="600" fill="var(--text-secondary)" text-anchor="middle">Year</text>
             <text x="14" y="125" font-family="var(--font-body)" font-size="16" font-weight="600" fill="var(--text-secondary)" text-anchor="middle" transform="rotate(-90 14 125)">Cumulative papers</text>
           </svg>
+
+          <div class="pub-chart-summary" style="display:none; flex-direction:column; gap:16px;">
+            <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+              <span style="font-family:var(--font-display); font-size:40px; font-weight:700; color:var(--brand-primary); line-height:1;">{{ chartTotal }}</span>
+              <span style="font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">papers published, {{ chartFirstYear }}–{{ chartLastYear }}</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <sc-for list="{{ yearSummary }}" as="y" hint-placeholder-count="7">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-tertiary); width:44px; flex:none;">{{ y.year }}</span>
+                  <div style="flex:1; height:8px; border-radius:var(--radius-pill); background:var(--blue-100); overflow:hidden;">
+                    <div style="height:100%; border-radius:var(--radius-pill); background:var(--blue-600); width:{{ y.pct }}%;"></div>
+                  </div>
+                  <span style="font-family:var(--font-mono); font-size:var(--text-sm); font-weight:600; color:var(--text-primary); width:28px; flex:none; text-align:right;">{{ y.total }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
         </div>
       </x-import>
       <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-secondary);">Filter by research topic:</p>
@@ -209,6 +227,14 @@ class Component extends DCLogic {
       return { y, label: String(val), labelY: y - 8 };
     });
 
+    // Mobile shows a plain-HTML summary instead of the SVG chart (see
+    // .pub-chart-summary / .pub-chart-svg toggle in responsive.css) — axis
+    // text inside an SVG viewBox can't be sized independently of the SVG's
+    // own scale, so a small-screen chart redesign is a plain list instead.
+    const yearSummary = cumulative.map(c => ({ year: c.year, total: c.total, pct: Math.round((c.total / maxVal) * 100) }));
+    const chartFirstYear = cumulative.length ? cumulative[0].year : '';
+    const chartLastYear = cumulative.length ? cumulative[cumulative.length - 1].year : '';
+
     return {
       navLinks: [
         { label: 'Home', href: 'index.html' },
@@ -227,6 +253,9 @@ class Component extends DCLogic {
       chartLinePath: linePath,
       chartPoints,
       gridLines,
+      yearSummary,
+      chartFirstYear,
+      chartLastYear,
     };
   }
 }

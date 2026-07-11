@@ -1690,14 +1690,22 @@ function NavBar({
     stroke: 'currentColor',
     strokeWidth: '1.8',
     strokeLinecap: 'round'
-  }, open ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '5', y1: '5', x2: '19', y2: '19' }), /*#__PURE__*/React.createElement("line", { x1: '19', y1: '5', x2: '5', y2: '19' })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '4', y1: '7', x2: '20', y2: '7' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '12', x2: '20', y2: '12' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '17', x2: '20', y2: '17' })))), open && /*#__PURE__*/React.createElement("div", {
+  }, open ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '5', y1: '5', x2: '19', y2: '19' }), /*#__PURE__*/React.createElement("line", { x1: '19', y1: '5', x2: '5', y2: '19' })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '4', y1: '7', x2: '20', y2: '7' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '12', x2: '20', y2: '12' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '17', x2: '20', y2: '17' }))))), open && /*#__PURE__*/React.createElement("div", {
     className: 'nav-mobile-panel',
     style: {
+      position: 'absolute',
+      top: '64px',
+      left: 0,
+      right: 0,
+      zIndex: 39,
+      background: 'var(--surface-inverse)',
+      boxShadow: '0 12px 24px rgba(0,10,30,0.35)',
       display: 'flex',
       flexDirection: 'column',
-      gap: 'var(--space-1)',
-      padding: '8px var(--container-pad) 20px',
-      borderTop: '1px solid rgba(255,255,255,0.08)'
+      gap: 0,
+      padding: '4px var(--container-pad) 16px',
+      borderTop: '1px solid rgba(255,255,255,0.08)',
+      boxSizing: 'border-box'
     }
   }, links.map(l => /*#__PURE__*/React.createElement("a", {
     key: l.href,
@@ -1709,10 +1717,10 @@ function NavBar({
       fontWeight: 'var(--weight-medium)',
       color: l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)',
       textDecoration: 'none',
-      padding: '10px 0',
-      borderBottom: '1px solid rgba(255,255,255,0.06)'
+      padding: '14px 0',
+      borderBottom: '1px solid rgba(255,255,255,0.08)'
     }
-  }, l.label)))));
+  }, l.label))));
 }
 Object.assign(__ds_scope, { NavBar });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/NavBar.jsx", error: String((e && e.message) || e) }); }
