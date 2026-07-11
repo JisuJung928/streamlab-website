@@ -12,7 +12,7 @@
 // card renders under the item with a live thumbnail of that page.
 
 export const NEWS_ITEMS = [
-  { id: 'jeong_mun-trainee', date: '2026.07.01', title: '2026 H2 Research Trainee', excerpt: 'M.S. Jae Min Jeong and Mr. Jeonghu Mun joined the lab as a research trainee. Welcome!},
+  { id: 'jeong_mun-trainee', date: '2026.07.01', title: '2026 H2 Research Trainee', excerpt: 'M.S. Jae Min Jeong and Mr. Jeonghu Mun joined the lab as a research trainee. Welcome!' },
   { id: 'mrs2026', date: '2026.04.26', title: 'Attendance at MRS 2026 Spring Meeting', excerpt: 'Ph.D. Jisu Jung attended MRS 2026 Spring Meeting @ Hawaii and presented recent researches', imageId: 'news-mrs2026', imageSrc: 'assets/news_mrs2026.jpeg'},
   { id: 'pnu-seminar', date: '2026.03.19', title: 'Invited seminar at MSE of PNU', excerpt: 'AI-driven atomistic simulation: from property prediction to long-timescale behavior analysis — invited seminar at the Dept. of Materials Science and Engineering, Pusan National University', imageId: 'news-pnu', imageSrc: 'assets/news_pnu.png'},
   { id: 'bak-join', date: '2026.03.02', title: '2026 Spring M.S. course student', excerpt: 'Mr. Hyeongeun Bak joined the lab as an M.S. student, affiliated with both KICET and UNIST. Welcome!' },
