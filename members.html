@@ -115,7 +115,7 @@
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ m.name }}</p>
               </div>
               <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="info" hint-size="auto,24px">{{ m.role }}</x-import>
-              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-normal);">{{ m.topic }}</p>
+              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-normal); white-space:pre-line;">{{ m.topic }}</p>
               <p style="margin:0; font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">✉️ {{ m.email }}</p>
             </div>
           </x-import>
@@ -132,7 +132,7 @@
               <img src="{{ a.photoSrc }}" alt="{{ a.name }}" style="width:100%; height:240px; object-fit:contain; border-radius:14px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
               <div>
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ a.name }}</p>
-                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">{{ a.affiliation }}</p>
+                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);"><strong style="font-weight:700; color:var(--text-secondary);">Affiliation</strong> {{ a.affiliation }}</p>
               </div>
               <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,24px">{{ a.role }}</x-import>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">{{ a.period }}</p>
@@ -174,8 +174,8 @@ class Component extends DCLogic {
         { label: 'Contact', href: 'contact.html' },
       ],
       members: withPhotoSrc([
-        { photoId: 'member_hyeongeun_bak', photoExt: 'jpg', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory<br>(Co-advisor: Byungjo Kim @ UNIST)', email: 'rms1016@naver.com' },
-        { photoId: 'member_hyeonseung_ahn', photoExt: 'png', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI <br>(Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
+        { photoId: 'member_hyeongeun_bak', photoExt: 'jpg', name: 'Hyeongeun Bak', role: 'M.S. Student', topic: 'Density functional theory\n(Co-advisor: Byungjo Kim @ UNIST)', email: 'rms1016@naver.com' },
+        { photoId: 'member_hyeonseung_ahn', photoExt: 'png', name: 'Hyeonseung Ahn', role: 'Research Trainee', topic: 'Generative AI\n(Co-advisor: Byungjo Kim @ UNIST)', email: 'gustmd582@unist.ac.kr' },
       ]),
       alumni: withPhotoSrc([
         { photoId: 'member_yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2026.03' },

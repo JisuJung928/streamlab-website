@@ -17,7 +17,7 @@
 
 export const FIELD_STYLE = {
   'First-principles calculation': { bg: 'var(--blue-100)', color: 'var(--brand-primary)' },
-  'Machine learning potential': { bg: 'var(--fog-100)', color: 'var(--fog-700)' },
+  'Machine learning potential': { bg: 'color-mix(in srgb, var(--navy-800) 14%, white)', color: 'var(--navy-800)' },
   'Multi-scale simulation': { bg: 'var(--sage-100)', color: 'var(--sage-600)' },
   'Generative AI for materials': { bg: 'var(--gold-200)', color: 'var(--gold-700)' },
 };

@@ -57,7 +57,12 @@
 /* ---------- Research page rows ---------- */
 @media (max-width: 720px) {
   .research-row { grid-template-columns: 1fr !important; gap: 20px !important; }
-  .research-icon { width: 160px !important; height: 160px !important; }
+  .research-icon { width: min(280px, 70vw) !important; height: min(280px, 70vw) !important; }
+}
+
+/* ---------- Publication cumulative chart ---------- */
+@media (max-width: 640px) {
+  .pub-chart { aspect-ratio: 1100 / 460 !important; }
 }
 
 /* ---------- Contact map / card ---------- */
