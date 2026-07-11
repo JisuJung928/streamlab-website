@@ -1640,6 +1640,7 @@ function NavBar({
       flexShrink: 0
     }
   }, brand)), /*#__PURE__*/React.createElement("nav", {
+    className: 'nav-links-desktop',
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -1663,6 +1664,53 @@ function NavBar({
     },
     onMouseLeave: e => {
       e.currentTarget.style.color = l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)';
+    }
+  }, l.label))), /*#__PURE__*/React.createElement("button", {
+    type: 'button',
+    className: 'nav-toggle-btn',
+    'aria-label': open ? 'Close menu' : 'Open menu',
+    onClick: () => setOpen(o => !o),
+    style: {
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '40px',
+      height: '40px',
+      flexShrink: 0,
+      border: 'none',
+      background: 'transparent',
+      color: 'var(--text-on-inverse)',
+      cursor: 'pointer'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: '0 0 24 24',
+    width: '24',
+    height: '24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: '1.8',
+    strokeLinecap: 'round'
+  }, open ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '5', y1: '5', x2: '19', y2: '19' }), /*#__PURE__*/React.createElement("line", { x1: '19', y1: '5', x2: '5', y2: '19' })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("line", { x1: '4', y1: '7', x2: '20', y2: '7' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '12', x2: '20', y2: '12' }), /*#__PURE__*/React.createElement("line", { x1: '4', y1: '17', x2: '20', y2: '17' })))), open && /*#__PURE__*/React.createElement("div", {
+    className: 'nav-mobile-panel',
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--space-1)',
+      padding: '8px var(--container-pad) 20px',
+      borderTop: '1px solid rgba(255,255,255,0.08)'
+    }
+  }, links.map(l => /*#__PURE__*/React.createElement("a", {
+    key: l.href,
+    href: l.href,
+    onClick: () => setOpen(false),
+    style: {
+      fontFamily: 'var(--font-body)',
+      fontSize: 'var(--text-md)',
+      fontWeight: 'var(--weight-medium)',
+      color: l.href === activeHref ? 'var(--text-on-inverse)' : 'var(--text-on-inverse-muted)',
+      textDecoration: 'none',
+      padding: '10px 0',
+      borderBottom: '1px solid rgba(255,255,255,0.06)'
     }
   }, l.label)))));
 }

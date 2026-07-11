@@ -49,15 +49,16 @@
 
 /* ---------- News timeline ---------- */
 @media (max-width: 640px) {
-  .news-row { grid-template-columns: 1fr !important; gap: 4px !important; padding: 18px 0 !important; }
+  .news-row { grid-template-columns: minmax(0, 1fr) !important; gap: 4px !important; padding: 18px 0 !important; }
   .news-date-col, .news-dot-col { display: none !important; }
   .news-rail { display: none !important; }
+  .news-row a[target="_blank"] { max-width: 100% !important; }
 }
 
 /* ---------- Research page rows ---------- */
 @media (max-width: 720px) {
   .research-row { grid-template-columns: 1fr !important; gap: 20px !important; }
-  .research-icon { width: min(280px, 70vw) !important; height: min(280px, 70vw) !important; }
+  .research-icon { width: min(280px, 70vw) !important; height: min(280px, 70vw) !important; margin: 0 auto !important; }
 }
 
 /* ---------- Publication cumulative chart ---------- */
