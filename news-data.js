@@ -21,7 +21,7 @@ export const NEWS_ITEMS = [
   { id: 'media-interview', date: '2026.01.16', title: '2026 Q1 Media Highlight', excerpt: 'Demonstration of immersion cooling equipment', link: 'https://www.news1.kr/industry/general-industry/6041784'},
   { id: 'ahn-trainee', date: '2026.01.05', title: '2026 H1 Research Trainee', excerpt: 'Mr. Hyeonseung Ahn (UNIST) joined the lab as a research trainee for six months. Welcome!' },
   { id: 'kim-intern', date: '2025.11.03', title: '2025 Q3 Research Intern', excerpt: 'M.S. Yeojin Kim joined the lab as a research intern for a year. Welcome!' },
-  { id: 'jo_song-intern', date: '2025.07.01', title: '2025 Summer Co-op students', excerpt: 'Mr. Seongha Jo and Ms. Miryung Song joined the lab as a Co-op students for two months. Welcome!' },
+  { id: 'jo_song-student', date: '2025.07.01', title: '2025 Summer Co-op students', excerpt: 'Mr. Seongha Jo and Ms. Miryung Song joined the lab as a Co-op students for two months. Welcome!' },
   { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'news-beginning', imageSrc: 'assets/hero-bg.jpg' },
 ];
 
