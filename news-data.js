@@ -12,7 +12,7 @@
 // card renders under the item with a live thumbnail of that page.
 
 export const NEWS_ITEMS = [
-  { id: 'begin_pknu', date: '2026.09.01', title: 'New chapter @ PKNU', excerpt: 'STREAM Lab has officially moved to PKNU. New home, same mission. We are excited for all the great work ahead.' },
+  { id: 'begin_pknu', date: '2026.09.01', title: 'New chapter @ PKNU', excerpt: 'STREAM Lab has officially moved to PKNU. New home, same mission. We are excited for all the great work ahead.', 'imageId: news-pknu', imageSrc: 'assets/hero-bg.jpg' },
   { id: 'first_group_photo', date: '2026.08.18', title: 'First group photo @ KICET', excerpt: 'STREAM Lab members took the first group photo @ KICET', imageSrc: 'assets/news_20260818.jpeg' },
   { id: 'jeong_mun-trainee', date: '2026.07.01', title: '2026 H2 Research Trainee', excerpt: 'M.S. Jae Min Jeong and Mr. Jeonghu Mun joined the lab as a research trainee. Welcome!' },
   { id: 'mrs2026', date: '2026.04.26', title: 'MRS 2026 Spring Meeting', excerpt: 'Ph.D. Jisu Jung attended MRS 2026 Spring Meeting @ Hawaii and gave poster presentation', imageId: 'news-mrs2026', imageSrc: 'assets/news_mrs2026.jpeg'},
@@ -24,7 +24,7 @@ export const NEWS_ITEMS = [
   { id: 'ahn-trainee', date: '2026.01.05', title: '2026 H1 Research Trainee', excerpt: 'Mr. Hyeonseung Ahn (UNIST) joined the lab as a research trainee for six months. Welcome!' },
   { id: 'kim-intern', date: '2025.11.03', title: '2025 Q3 Research Intern', excerpt: 'M.S. Yeojin Kim joined the lab as a research intern for a year. Welcome!' },
   { id: 'jo_song-student', date: '2025.07.01', title: '2025 Summer Co-op students', excerpt: 'Mr. Seongha Jo and Ms. Miryung Song joined the lab as a Co-op students for two months. Welcome!' },
-  { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'news-beginning', imageSrc: 'assets/hero-bg.jpg' },
+  { id: 'beginning', date: '2025.03.04', title: 'Beginning', excerpt: 'Ph.D. Jisu Jung has been a researcher at KICET since 2025.', imageId: 'news-beginning', imageSrc: 'assets/kicet_building.jpg' },
 ];
 
 // Builds a live thumbnail URL for a link preview card (via a public
