@@ -27,7 +27,11 @@
 
   <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.NavBar" links="{{ navLinks }}" active-href="index.html" brand-href="index.html" logo-src="assets/logo.png" hint-size="100%,64px"></x-import>
 
-  <section class="hero-pad-lg container-px" style="position:relative; overflow:hidden; padding:104px 48px 72px; background:var(--navy-900);">
+  <!-- Hero bottom padding (146px desktop / 168px at <=640px, in responsive.css)
+       backfills the height of the removed action buttons so the visible
+       hero-bg area stays the size it was: 72 + 73.78 desktop, 40 + 127.56
+       mobile (buttons stacked there). -->
+  <section class="hero-pad-lg container-px" style="position:relative; overflow:hidden; padding:104px 48px 146px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
       <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
     </div>
@@ -37,10 +41,6 @@
       <h1 class="hero-title-xl" style="font-family:var(--font-display); font-weight:700; font-size:60px; color:#fff; max-width:760px; margin:0; letter-spacing:-0.02em; line-height:1.1;">STREAM Lab</h1>
       <p class="hero-sub" style="margin:0; font-family:var(--font-body); font-size:18px; color:var(--text-on-inverse-muted); max-width:640px; line-height:1.5;">Simulation and Theoretical REsearch with AI for Materials</p>
       <p style="margin:12px 0 0; font-family:var(--font-body); font-size:var(--text-md); color:var(--text-on-inverse-muted); max-width:820px; line-height:var(--leading-relaxed);">Our lab accelerates the discovery of new materials through simulation-based research that spans quantum-mechanical first-principles calculation and large-scale atomistic simulation, bridged by machine learning interatomic potentials and generative artificial intelligence.</p>
-      <div class="hero-actions" style="display:flex; gap:12px; margin-top:12px;">
-        <a href="contact.html" style="white-space:nowrap;"><x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Button" variant="accent" hint-size="140px,44px">Join Us</x-import></a>
-        <a href="publication.html" style="white-space:nowrap;"><x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Button" variant="secondary" hint-size="160px,44px">View Publications</x-import></a>
-      </div>
     </div>
   </section>
 

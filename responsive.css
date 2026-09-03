@@ -15,13 +15,12 @@
 /* ---------- Page container / hero ---------- */
 @media (max-width: 640px) {
   .container-px { padding-left: 20px !important; padding-right: 20px !important; }
-  .hero-pad-lg { padding-top: 84px !important; padding-bottom: 40px !important; }
+  .hero-pad-lg { padding-top: 84px !important; padding-bottom: 168px !important; }
   .hero-pad-sm { padding-top: 52px !important; padding-bottom: 28px !important; }
   .hero-title-xl { font-size: 34px !important; }
   .hero-title-3xl { font-size: 28px !important; }
   .hero-sub { font-size: 15px !important; }
   .section-stack { gap: 48px !important; }
-  .hero-actions { flex-direction: column !important; align-items: stretch !important; }
 }
 
 /* ---------- Grids ---------- */
