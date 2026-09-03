@@ -1614,6 +1614,15 @@ function NavBar({
       gap: 'var(--space-3)',
       flexShrink: 0
     }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: brandHref,
+    "aria-label": brand,
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      flexShrink: 0,
+      textDecoration: 'none'
+    }
   }, React.createElement('image-slot', {
     id: 'nav-logo',
     src: logoSrc,
@@ -1627,7 +1636,7 @@ function NavBar({
       borderRadius: '50%',
       flexShrink: 0
     }
-  }), /*#__PURE__*/React.createElement("a", {
+  })), /*#__PURE__*/React.createElement("a", {
     href: brandHref,
     style: {
       fontFamily: 'var(--font-display)',

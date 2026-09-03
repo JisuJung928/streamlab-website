@@ -138,7 +138,7 @@
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ a.name }}</p>
                 <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);"><strong style="font-weight:700; color:var(--text-secondary);">Affiliation</strong> {{ a.affiliation }}</p>
               </div>
-              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,24px">{{ a.role }}</x-import>
+              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,40px"><span style="white-space:pre-line; text-align:center; line-height:var(--leading-snug);">{{ a.role }}</span></x-import>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">{{ a.period }}</p>
             </div>
           </x-import>
@@ -183,7 +183,7 @@ class Component extends DCLogic {
       ]),
       alumni: withPhotoSrc([
         { photoId: 'member_yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2025.11 - 2026.03' },
-        { photoId: 'member_hyeonseung_ahn', photoExt: 'png', initials: 'HA', name: 'Hyeonseung Ahn', role: 'Research Trainee (Co-advisor: Byungjo Kim @ UNIST', period: '2026.01 - 2026.08' },
+        { photoId: 'member_hyeonseung_ahn', photoExt: 'png', initials: 'HA', name: 'Hyeonseung Ahn', role: 'Research Trainee\n(Co-advisor: Byungjo Kim @ UNIST)', period: '2026.01 - 2026.08' },
       ]),
     };
   }
