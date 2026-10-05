@@ -53,7 +53,7 @@
 
   <section class="hero-pad-sm container-px" style="position:relative; overflow:hidden; padding:64px 48px 40px; background:var(--navy-900);">
     <div style="position:absolute; inset:0; z-index:0;">
-      <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; display:block; background:var(--navy-800);">
+      <img src="assets/hero-bg.jpg" alt="STREAM Lab building" style="width:100%; height:100%; object-fit:cover; object-position:center 80%; display:block; background:var(--navy-800);">
     </div>
     <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(0,23,61,0.90) 0%, rgba(0,32,91,0.84) 100%);"></div>
     <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:12px;">
@@ -76,6 +76,7 @@
             <div style="display:flex; flex-direction:column; gap:4px; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">
               <span>✉️ jsjung@pknu.ac.kr</span>
               <span>📞 +82-51-629-6363</span>
+              <span>🏢 E13, Room 813</span>
             </div>
           </div>
           <div style="display:flex; flex-direction:column; gap:16px;">
@@ -83,11 +84,11 @@
               <h4 style="margin:0 0 12px; font-family:var(--font-display); font-size:var(--text-lg); font-weight:700; color:var(--brand-primary);">Research experience</h4>
               <div style="display:flex; flex-direction:column; gap:10px;">
                 <div>
-                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Assistant professor <span style="color:var(--text-tertiary); font-weight:400;">(2026.09 – Present)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Assistant Professor <span style="color:var(--text-tertiary); font-weight:400;">(2026.09 – Present)</span></p>
                   <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Pukyong National University</p>
                 </div>
                 <div>
-                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Senior researcher <span style="color:var(--text-tertiary); font-weight:400;">(2026.04 – 2026.08)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Senior Researcher <span style="color:var(--text-tertiary); font-weight:400;">(2026.04 – 2026.08)</span></p>
                   <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Korea Institute of Ceramic Engineering &amp; Technology</p>
                 </div>
                 <div>
@@ -95,7 +96,7 @@
                   <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Korea Institute of Ceramic Engineering &amp; Technology</p>
                 </div>
                 <div>
-                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Visiting student <span style="color:var(--text-tertiary); font-weight:400;">(2024.07 – 2024.08)</span></p>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-primary);">Visiting Student <span style="color:var(--text-tertiary); font-weight:400;">(2024.07 – 2024.08)</span></p>
                   <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);">Imperial College London (Advisor: Aron Walsh)</p>
                 </div>
               </div>
@@ -133,24 +134,30 @@
       </x-import>
     </section>
 
-    <section style="display:flex; flex-direction:column; gap:24px;">
-      <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Members</h2>
-      <div class="grid-3" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
-        <sc-for list="{{ members }}" as="m" hint-placeholder-count="2">
-          <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
-            <div style="display:flex; flex-direction:column; gap:14px;">
-              <img src="{{ m.photoSrc }}" alt="{{ m.name }}" style="width:100%; height:240px; object-fit:contain; border-radius:14px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
-              <div>
-                <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ m.name }}</p>
-              </div>
-              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="info" hint-size="auto,24px">{{ m.role }}</x-import>
-              <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-normal); white-space:pre-line;">{{ m.topic }}</p>
-              <p style="margin:0; font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">✉️ {{ m.email }}</p>
-            </div>
-          </x-import>
-        </sc-for>
-      </div>
-    </section>
+    <div style="display:flex; flex-direction:column; gap:64px;">
+      <sc-for list="{{ memberGroups }}" as="g" hint-placeholder-count="2">
+        <section style="display:flex; flex-direction:column; gap:24px;">
+          <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">{{ g.title }}</h2>
+          <div class="grid-3" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+            <sc-for list="{{ g.members }}" as="m" hint-placeholder-count="2">
+              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Card" hint-size="100%,280px">
+                <div style="display:flex; flex-direction:column; gap:14px;">
+                  <img src="{{ m.photoSrc }}" alt="{{ m.name }}" style="width:100%; height:240px; object-fit:contain; border-radius:14px; display:block; background:var(--fog-0); border:1px solid var(--border-subtle);">
+                  <div>
+                    <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ m.name }}</p>
+                  </div>
+                  <sc-if value="{{ m.role }}" hint-placeholder-val="{{ false }}">
+                    <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="info" hint-size="auto,24px"><span style="text-transform:none;">{{ m.role }}</span></x-import>
+                  </sc-if>
+                  <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary); line-height:var(--leading-normal); white-space:pre-line;">{{ m.topic }}</p>
+                  <p style="margin:0; font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">✉️ {{ m.email }}</p>
+                </div>
+              </x-import>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+    </div>
 
     <section style="display:flex; flex-direction:column; gap:24px;">
       <h2 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--text-primary); margin:0;">Alumni</h2>
@@ -163,7 +170,7 @@
                 <p style="margin:0; font-family:var(--font-display); font-size:var(--text-base); color:var(--text-primary);">{{ a.name }}</p>
                 <p style="margin:0; font-family:var(--font-body); font-size:var(--text-xs); color:var(--text-tertiary);"><strong style="font-weight:700; color:var(--text-secondary);">Affiliation</strong> {{ a.affiliation }}</p>
               </div>
-              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,40px"><span style="white-space:pre-line; text-align:center; line-height:var(--leading-snug);">{{ a.role }}</span></x-import>
+              <x-import component-from-global-scope="STREAMLabDesignSystem_0015c8.Badge" tone="neutral" hint-size="auto,40px"><span style="white-space:pre-line; text-align:left; text-transform:none; line-height:var(--leading-snug);">{{ a.role }}</span></x-import>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">{{ a.period }}</p>
             </div>
           </x-import>
@@ -192,6 +199,15 @@
 class Component extends DCLogic {
   renderVals() {
     const withPhotoSrc = (list) => list.map(it => ({ ...it, photoSrc: `assets/${it.photoId}.${it.photoExt}` }));
+    const degreeGroups = [
+      { degree: 'phd', title: 'Ph.D. Students' },
+      { degree: 'ms', title: 'M.S. Students' },
+      { degree: 'undergrad', title: 'Undergraduate Researchers' },
+    ];
+    // Empty groups are dropped so a section only appears once it has members.
+    const groupByDegree = (list) => degreeGroups
+      .map(g => ({ title: g.title, members: list.filter(m => m.degree === g.degree) }))
+      .filter(g => g.members.length > 0);
     return {
       navLinks: [
         { label: 'Home', href: 'index.html' },
@@ -202,10 +218,11 @@ class Component extends DCLogic {
         { label: 'News', href: 'news.html' },
         { label: 'Contact', href: 'contact.html' },
       ],
-      members: withPhotoSrc([
-        { photoId: 'member_jae_min_jeong', photoExt: 'jpg', name: 'Jae Min Jeong', role: 'Research Trainee', topic: 'Density functional theory\nMachine learning potential', email: 'zcdsaaa@gmail.com' },
-        { photoId: 'member_jeonghu_mun', photoExt: 'jpg', name: 'Jeonghu Mun', role: 'Research Trainee', topic: 'Generative AI', email: 'answjdgn123@pknu.ac.kr' },
-      ]),
+      // degree: 'phd' | 'ms' | 'undergrad'. Optional role (e.g. 'Integrated M.S.–Ph.D.') shows as a badge.
+      memberGroups: groupByDegree(withPhotoSrc([
+        { photoId: 'member_jae_min_jeong', photoExt: 'jpg', name: 'Jae Min Jeong', degree: 'phd', topic: 'Density functional theory\nMachine learning potential', email: 'zcdsaaa@gmail.com' },
+        { photoId: 'member_jeonghu_mun', photoExt: 'jpg', name: 'Jeonghu Mun', degree: 'undergrad', topic: 'Generative AI', email: 'answjdgn123@pknu.ac.kr' },
+      ])),
       alumni: withPhotoSrc([
         { photoId: 'member_yeojin_kim', photoExt: 'jpg', initials: 'YK', name: 'Yeojin Kim', affiliation: 'Hudson Advanced Materials Korea', role: 'Research Intern', period: '2025.11 - 2026.03' },
         { photoId: 'member_hyeonseung_ahn', photoExt: 'png', initials: 'HA', name: 'Hyeonseung Ahn', role: 'Research Trainee\n(Co-advisor: Byungjo Kim @ UNIST)', period: '2026.01 - 2026.08' },
