@@ -12,6 +12,7 @@
 // card renders under the item with a live thumbnail of that page.
 
 export const NEWS_ITEMS = [
+  { id: 'kyurin_park-trainee', date: '2026.09.30', title: '2026 H2 Undergraduate Researcher', excerpt: 'Ms. Kyurin Park joined the lab as a undergraduate researcher. Welcome!' },
   { id: 'begin_pknu', date: '2026.09.01', title: 'New chapter @ PKNU', excerpt: 'STREAM Lab has officially moved to PKNU. New home, same mission. We are excited for all the great work ahead.', imageId: 'news-pknu', imageSrc: 'assets/hero-bg.jpg' },
   { id: 'first_group_photo', date: '2026.08.18', title: 'First group photo @ KICET', excerpt: 'STREAM Lab members took the first group photo @ KICET', imageId: 'news-group-2026', imageSrc: 'assets/news_20260818.jpeg' },
   { id: 'jeong_mun-trainee', date: '2026.07.01', title: '2026 H2 Research Trainee', excerpt: 'M.S. Jae Min Jeong and Mr. Jeonghu Mun joined the lab as a research trainee. Welcome!' },
