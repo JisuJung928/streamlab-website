@@ -139,7 +139,7 @@
                     <span style="align-self:flex-start; font-family:var(--font-body); font-size:var(--text-2xs); font-weight:600; letter-spacing:var(--tracking-wide); text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:var(--radius-pill); background:{{ f.bg }}; color:{{ f.color }};">{{ f.label }}</span>
                   </sc-for>
                 </div>
-                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);"><sc-for list="{{ pub.titleParts }}" as="tp" hint-placeholder-count="1"><sc-if value="{{ tp.sub }}" hint-placeholder-val="{{ false }}"><sub>{{ tp.text }}</sub></sc-if><sc-if value="{{ tp.plain }}" hint-placeholder-val="{{ true }}">{{ tp.text }}</sc-if></sc-for></p>
+                <p style="margin:0; font-family:var(--font-body); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);"><sc-for list="{{ pub.titleParts }}" as="tp" hint-placeholder-count="1"><sc-if value="{{ tp.sub }}" hint-placeholder-val="{{ false }}"><sub>{{ tp.text }}</sub></sc-if><sc-if value="{{ tp.plain }}" hint-placeholder-val="{{ true }}"><span>{{ tp.text }}</span></sc-if></sc-for></p>
                 <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">
                   <sc-for list="{{ pub.authorParts }}" as="ap" hint-placeholder-count="1">
                     <sc-if value="{{ ap.bold }}" hint-placeholder-val="{{ false }}">
