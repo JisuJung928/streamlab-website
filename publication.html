@@ -175,7 +175,7 @@ class Component extends DCLogic {
   state = { activeTopics: [], rawGroups: null };
 
   async componentDidMount() {
-    const mod = await import('./publication-data.js');
+    const mod = await import('./publication-data.js?v=20261007');
     this.setState({ rawGroups: mod.PUBLICATIONS, withComputedFields: mod.withComputedFields });
   }
 
@@ -198,7 +198,7 @@ class Component extends DCLogic {
     const anyFilterActive = activeTopics.length > 0;
     const paperGroups = rawGroups
       .map(g => {
-        const items = (withComputedFields ? withComputedFields(g.items) : []).filter(it => {
+        const items = (withComputedFields ? withComputedFields(g.items) : []).map(it => (it.titleParts ? it : { ...it, titleParts: [{ text: it.title, plain: true }] })).filter(it => {
           if (!anyFilterActive) return true;
           return it.fields.some(f => activeTopics.includes(f));
         });

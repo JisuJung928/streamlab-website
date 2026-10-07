@@ -198,8 +198,8 @@ class Component extends DCLogic {
   state = { rawGroups: null, newsRaw: null };
 
   async componentDidMount() {
-    const pubMod = await import('./publication-data.js');
-    const newsMod = await import('./news-data.js');
+    const pubMod = await import('./publication-data.js?v=20261007');
+    const newsMod = await import('./news-data.js?v=20261007');
     this.setState({
       rawGroups: pubMod.PUBLICATIONS,
       FIELD_STYLE: pubMod.FIELD_STYLE,
@@ -229,7 +229,7 @@ class Component extends DCLogic {
       publications = eligible.slice(0, 3).map(p => ({
         ...p,
         fieldsStyled: p.fields.map(f => ({ label: f, bg: FIELD_STYLE[f].bg, color: FIELD_STYLE[f].color })),
-        titleParts: splitTitle(p.title),
+        titleParts: splitTitle ? splitTitle(p.title) : [{ text: p.title, plain: true }],
         authorParts: splitAuthors(p.authors),
       }));
     }
