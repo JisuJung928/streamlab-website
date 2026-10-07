@@ -3,6 +3,9 @@
 // (Recent Publications preview). Edit PUBLICATIONS here and both pages stay
 // in sync.
 //
+// Chemical formulas in titles: wrap subscripts in _{...}, e.g.
+// 'Li_{6}PS_{5}Cl' or 'Ce_{0.95}Mn_{0.025}O_{2\u2212\u03B4}'.
+//
 // Highlighting a name in the author list is manual, per paper: wrap the
 // exact text you want bolded in double asterisks, e.g. '**Jung, J.**'. This
 // replaces the old global-regex approach — nothing is auto-bolded, so
@@ -37,6 +40,23 @@ export function splitAuthors(str) {
   return parts;
 }
 
+// Parses subscript markup in a title into parts, so chemical formulas render
+// properly: write 'Li_{6}PS_{5}Cl' for Li₆PS₅Cl. Only text inside _{...} is
+// subscripted; everything else is plain.
+export function splitTitle(str) {
+  const parts = [];
+  const re = /_\{(.+?)\}/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(str))) {
+    if (m.index > last) parts.push({ text: str.slice(last, m.index), sub: false, plain: true });
+    parts.push({ text: m[1], sub: true, plain: false });
+    last = re.lastIndex;
+  }
+  if (last < str.length) parts.push({ text: str.slice(last), sub: false, plain: true });
+  return parts;
+}
+
 function stripHighlightMarkup(str) {
   return str.replace(/\*\*/g, '');
 }
@@ -45,6 +65,7 @@ export function withComputedFields(items) {
   return items.map(it => ({
     ...it,
     fieldsStyled: it.fields.map(f => ({ label: f, bg: FIELD_STYLE[f].bg, color: FIELD_STYLE[f].color })),
+    titleParts: splitTitle(it.title),
     authorParts: splitAuthors(it.authors),
     doiUrl: it.doi ? `https://doi.org/${it.doi}` : '',
   }));
@@ -80,6 +101,7 @@ export function analyzeAuthorship(it) {
 
 export const PUBLICATIONS = [
   { year: 'Submitted', items: [
+    { photoId: 'pub-alio-co2', fields: ['First-principles calculation'], title: 'Aliovalent co-doping enables Ce_{0.95}Mn_{0.025}Fe_{0.025}O_{2\u2212\u03B4} electrodes for high-performance and durability CO_{2} electrolysis', authors: 'Nguyen, X. D.\u2020, Lee, J. B.\u2020, Sohn, W., **Jung, J.**, Lee, S. W., Baik, H., Joo, J. H., Oh, S. J.*, Lee, S.*, Shin, T. H.*', venue: 'Submitted', doi: '' },
     { photoId: 'pub-topo-ptga', fields: ['First-principles calculation'], title: 'Decoupling of topological surface states from catalytic activity in the chiral topological semimetal PtGa', authors: 'Jung, J.\u2020, **Jung, J.\u2020**, Kim, H., Lee, Y., Lee, J., Lee, J. H., Chung, D. Y., Han, S., Kim, C., Mun, B. S. & Yoo, S. J.*', venue: 'Submitted', doi: '', authorshipIgnoreIndex: [0] },
     { photoId: 'pub-ovonic-switching', fields: ['First-principles calculation'], title: 'Field-free ovonic threshold switching at the glass transition with transient and inhomogeneous covalent-to-metavalent conversion', authors: 'Kim, D.\u2020*, Miao, N.\u2020, **Jung, J.\u2020**, Jung, T. S.\u2020, Zhou, Y., Lee, S., Sch\u00f6n, C.-F., Yu, Y., Kim, J. H.*, & Han, S.*', venue: 'Submitted', doi: '' },
   ]},
@@ -92,11 +114,11 @@ export const PUBLICATIONS = [
   ]},
   { year: '2024', items: [
     { photoId: 'pub-jung-modified', photoSrc: 'assets/paper_jung_modified.jpeg', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Modified activation-relaxation technique (ARTn) method tuned for efficient identification of transition states in surface reactions', authors: '**Jung, J.**, An, H., Lee, J. & Han, S.*', venue: 'J. Chem. Theory Comput. 20, 8024', doi: '10.1021/acs.jctc.4c00767' },
-    { photoId: 'pub-li-diffusion', fields: ['Machine learning potential'], title: 'Disorder-dependent Li diffusion in Li6PS5Cl investigated by machine learning potential', authors: 'Lee, J.\u2020, Ju, S.\u2020, Hwang, S., You, J., **Jung, J.**, Kang, Y.* & Han, S.*', venue: 'ACS Appl. Mater. Interface 16, 46442', doi: '10.1021/acsami.4c08865' },
+    { photoId: 'pub-li-diffusion', fields: ['Machine learning potential'], title: 'Disorder-dependent Li diffusion in Li_{6}PS_{5}Cl investigated by machine learning potential', authors: 'Lee, J.\u2020, Ju, S.\u2020, Hwang, S., You, J., **Jung, J.**, Kang, Y.* & Han, S.*', venue: 'ACS Appl. Mater. Interface 16, 46442', doi: '10.1021/acsami.4c08865' },
     { photoId: 'pub-melting-temp', fields: [], title: 'Predicting melting temperature of inorganic crystals via crystal graph neural network enhanced by transfer learning', authors: 'Kim, J.\u2020, **Jung, J.\u2020**, Kim, S. & Han, S.*', venue: 'Comput. Mater. Sci. 234, 112783', doi: '10.1016/j.commatsci.2024.112783' },
   ]},
   { year: '2023', items: [
-    { photoId: 'pub-pt3co-degradation', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Electrochemical degradation of Pt3Co nanoparticles investigated by off-lattice kinetic Monte Carlo simulations with machine-learned potentials', authors: '**Jung, J.\u2020**, Ju, S.\u2020, Kim, P.-H., Hong, D., Jeong, W., Lee, J., Han, S.* & Kang, S.*', venue: 'ACS Catal. 13, 16078\u201316087', doi: '10.1021/acscatal.3c04964' },
+    { photoId: 'pub-pt3co-degradation', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Electrochemical degradation of Pt_{3}Co nanoparticles investigated by off-lattice kinetic Monte Carlo simulations with machine-learned potentials', authors: '**Jung, J.\u2020**, Ju, S.\u2020, Kim, P.-H., Hong, D., Jeong, W., Lee, J., Han, S.* & Kang, S.*', venue: 'ACS Catal. 13, 16078\u201316087', doi: '10.1021/acscatal.3c04964' },
     { photoId: 'pub-mlp-applications', fields: ['Machine learning potential'], title: 'Applications and training sets of machine learning potentials', authors: 'Hong, C.\u2020, Kim, J.\u2020, Kim, J., **Jung, J.**, Ju, S., Choi, J. M. & Han, S.*', venue: 'Sci. Technol. Adv. Mater.: Methods 3, 2269948', doi: '10.1080/27660400.2023.2269948' },
     { photoId: 'pub-ternary-oxides', fields: ['Machine learning potential'], title: 'Stability and equilibrium structures of unknown ternary metal oxides explored by machine-learned potentials', authors: 'Hwang, S., **Jung, J.**, Hong, C., Jeong, W., Kang, S.* & Han, S.*', venue: 'J. Am. Chem. Soc. 145, 19378\u201319386 \u2014 Supplementary cover', doi: '10.1021/jacs.3c06210' },
   ]},

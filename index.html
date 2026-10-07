@@ -141,7 +141,7 @@
                   <span style="align-self:flex-start; font-family:var(--font-body); font-size:var(--text-2xs); font-weight:600; letter-spacing:var(--tracking-wide); text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:var(--radius-pill); background:{{ f.bg }}; color:{{ f.color }};">{{ f.label }}</span>
                 </sc-for>
               </div>
-              <h3 style="margin:0; font-family:var(--font-display); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);">{{ pub.title }}</h3>
+              <h3 style="margin:0; font-family:var(--font-display); font-size:var(--text-md); line-height:var(--leading-snug); color:var(--text-primary);"><sc-for list="{{ pub.titleParts }}" as="tp" hint-placeholder-count="1"><sc-if value="{{ tp.sub }}" hint-placeholder-val="{{ false }}"><sub>{{ tp.text }}</sub></sc-if><sc-if value="{{ tp.plain }}" hint-placeholder-val="{{ true }}">{{ tp.text }}</sc-if></sc-for></h3>
               <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); color:var(--text-secondary);">
                 <sc-for list="{{ pub.authorParts }}" as="ap" hint-placeholder-count="1">
                   <sc-if value="{{ ap.bold }}" hint-placeholder-val="{{ false }}">
@@ -204,13 +204,14 @@ class Component extends DCLogic {
       rawGroups: pubMod.PUBLICATIONS,
       FIELD_STYLE: pubMod.FIELD_STYLE,
       splitAuthors: pubMod.splitAuthors,
+      splitTitle: pubMod.splitTitle,
       analyzeAuthorship: pubMod.analyzeAuthorship,
       newsRaw: newsMod.NEWS_ITEMS,
     });
   }
 
   renderVals() {
-    const { rawGroups, FIELD_STYLE, splitAuthors, analyzeAuthorship, newsRaw } = this.state;
+    const { rawGroups, FIELD_STYLE, splitAuthors, splitTitle, analyzeAuthorship, newsRaw } = this.state;
 
     // Recent Publications shows only papers where the PI (Jung, J.) is the
     // first author, a co-first author, or a corresponding author — computed
@@ -228,6 +229,7 @@ class Component extends DCLogic {
       publications = eligible.slice(0, 3).map(p => ({
         ...p,
         fieldsStyled: p.fields.map(f => ({ label: f, bg: FIELD_STYLE[f].bg, color: FIELD_STYLE[f].color })),
+        titleParts: splitTitle(p.title),
         authorParts: splitAuthors(p.authors),
       }));
     }
