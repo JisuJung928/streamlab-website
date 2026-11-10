@@ -198,8 +198,8 @@ class Component extends DCLogic {
   state = { rawGroups: null, newsRaw: null };
 
   async componentDidMount() {
-    const pubMod = await import('./publication-data.js?v=20261007');
-    const newsMod = await import('./news-data.js?v=20261007');
+    const pubMod = await import('./publication-data.js?v=' + Date.now());
+    const newsMod = await import('./news-data.js?v=' + Date.now());
     this.setState({
       rawGroups: pubMod.PUBLICATIONS,
       FIELD_STYLE: pubMod.FIELD_STYLE,
