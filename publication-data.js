@@ -23,6 +23,7 @@ export const FIELD_STYLE = {
   'Machine learning potential': { bg: 'color-mix(in srgb, var(--navy-800) 14%, white)', color: 'var(--navy-800)' },
   'Multi-scale simulation': { bg: 'var(--sage-100)', color: 'var(--sage-600)' },
   'Generative AI for materials': { bg: 'var(--gold-200)', color: 'var(--gold-700)' },
+  'AI-driven property prediction': { bg: 'var(--fog-100)', color: 'var(--fog-700)' },
 };
 
 // Parses manual '**...**' bold markup in an author string into styled parts.
@@ -116,7 +117,7 @@ export const PUBLICATIONS = [
   { year: '2024', items: [
     { photoId: 'pub-jung-modified', photoSrc: 'assets/paper_jung_modified.jpeg', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Modified activation-relaxation technique (ARTn) method tuned for efficient identification of transition states in surface reactions', authors: '**Jung, J.**, An, H., Lee, J. & Han, S.*', venue: 'J. Chem. Theory Comput. 20, 8024', doi: '10.1021/acs.jctc.4c00767' },
     { photoId: 'pub-li-diffusion', fields: ['Machine learning potential'], title: 'Disorder-dependent Li diffusion in Li_{6}PS_{5}Cl investigated by machine learning potential', authors: 'Lee, J.\u2020, Ju, S.\u2020, Hwang, S., You, J., **Jung, J.**, Kang, Y.* & Han, S.*', venue: 'ACS Appl. Mater. Interface 16, 46442', doi: '10.1021/acsami.4c08865' },
-    { photoId: 'pub-melting-temp', fields: [], title: 'Predicting melting temperature of inorganic crystals via crystal graph neural network enhanced by transfer learning', authors: 'Kim, J.\u2020, **Jung, J.\u2020**, Kim, S. & Han, S.*', venue: 'Comput. Mater. Sci. 234, 112783', doi: '10.1016/j.commatsci.2024.112783' },
+    { photoId: 'pub-melting-temp', fields: ['AI-driven property prediction'], title: 'Predicting melting temperature of inorganic crystals via crystal graph neural network enhanced by transfer learning', authors: 'Kim, J.\u2020, **Jung, J.\u2020**, Kim, S. & Han, S.*', venue: 'Comput. Mater. Sci. 234, 112783', doi: '10.1016/j.commatsci.2024.112783' },
   ]},
   { year: '2023', items: [
     { photoId: 'pub-pt3co-degradation', fields: ['Multi-scale simulation', 'Machine learning potential'], title: 'Electrochemical degradation of Pt_{3}Co nanoparticles investigated by off-lattice kinetic Monte Carlo simulations with machine-learned potentials', authors: '**Jung, J.\u2020**, Ju, S.\u2020, Kim, P.-H., Hong, D., Jeong, W., Lee, J., Han, S.* & Kang, S.*', venue: 'ACS Catal. 13, 16078\u201316087', doi: '10.1021/acscatal.3c04964' },

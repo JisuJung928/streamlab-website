@@ -120,7 +120,7 @@
       </x-import>
       <p style="margin:0; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:var(--text-secondary);">Filter by research topic:</p>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <sc-for list="{{ topicFilters }}" as="topic" hint-placeholder-count="4">
+        <sc-for list="{{ topicFilters }}" as="topic" hint-placeholder-count="5">
           <button type="button" onClick="{{ toggleTopic }}" data-topic="{{ topic.label }}" style="cursor:pointer; border:1px solid {{ topic.borderColor }}; display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:var(--text-sm); font-weight:600; color:{{ topic.color }}; background:{{ topic.bg }}; border-radius:var(--radius-pill); padding:0.3rem 0.85rem;">{{ topic.label }}</button>
         </sc-for>
       </div>
@@ -206,12 +206,13 @@ class Component extends DCLogic {
       })
       .filter(g => g.items.length > 0);
 
-    const fieldStyleKeys = ['First-principles calculation', 'Machine learning potential', 'Multi-scale simulation', 'Generative AI for materials'];
+    const fieldStyleKeys = ['First-principles calculation', 'Machine learning potential', 'Multi-scale simulation', 'Generative AI for materials', 'AI-driven property prediction'];
     const FIELD_COLORS = {
       'First-principles calculation': { bg: 'var(--blue-100)', color: 'var(--brand-primary)' },
       'Machine learning potential': { bg: 'color-mix(in srgb, var(--navy-800) 14%, white)', color: 'var(--navy-800)' },
       'Multi-scale simulation': { bg: 'var(--sage-100)', color: 'var(--sage-600)' },
       'Generative AI for materials': { bg: 'var(--gold-200)', color: 'var(--gold-700)' },
+      'AI-driven property prediction': { bg: 'var(--fog-100)', color: 'var(--fog-700)' },
     };
     const topicFilters = fieldStyleKeys.map(label => {
       const active = activeTopics.includes(label);
