@@ -102,7 +102,7 @@ export function analyzeAuthorship(it) {
 
 export const PUBLICATIONS = [
   { year: 'Submitted', items: [
-    { photoId: 'pub-oxychloride', fields: ['Machine learning potential'], title: 'How anion composition governs structural frameworks and Li-ion transport in oxychloride solid-state electrolytes', authors: 'Lee, J., Hwang, S., Han, S., **Jung, J.***, Kang, Y.*, Kang, S.*', venue: 'Submitted', doi: '' },
+    { photoId: 'pub-oxychloride', fields: ['Machine learning potential'], title: 'How anion composition governs structural frameworks and Li-ion transport in oxychloride solid-state electrolytes', authors: 'Lee, J., Hwang, S., Han, S., Lee, J., **Jung, J.***, Kang, Y.*, Kang, S.*', venue: 'Submitted', doi: '' },
     { photoId: 'pub-alio-co2', fields: ['First-principles calculation'], title: 'Aliovalent co-doping enables Ce_{0.95}Mn_{0.025}Fe_{0.025}O_{2\u2212\u03B4} electrodes for high-performance and durability CO_{2} electrolysis', authors: 'Nguyen, X. D.\u2020, Lee, J. B.\u2020, Sohn, W., **Jung, J.**, Lee, S. W., Baik, H., Joo, J. H., Oh, S. J.*, Lee, S.*, Shin, T. H.*', venue: 'Submitted', doi: '' },
     { photoId: 'pub-topo-ptga', fields: ['First-principles calculation'], title: 'Decoupling of topological surface states from catalytic activity in the chiral topological semimetal PtGa', authors: 'Jung, J.\u2020, **Jung, J.\u2020**, Kim, H., Lee, Y., Lee, J., Lee, J. H., Chung, D. Y., Han, S., Kim, C., Mun, B. S. & Yoo, S. J.*', venue: 'Submitted', doi: '', authorshipIgnoreIndex: [0] },
     { photoId: 'pub-ovonic-switching', fields: ['First-principles calculation'], title: 'Field-free ovonic threshold switching at the glass transition with transient and inhomogeneous covalent-to-metavalent conversion', authors: 'Kim, D.\u2020*, Miao, N.\u2020, **Jung, J.\u2020**, Jung, T. S.\u2020, Zhou, Y., Lee, S., Sch\u00f6n, C.-F., Yu, Y., Kim, J. H.*, & Han, S.*', venue: 'Submitted', doi: '' },
@@ -125,7 +125,7 @@ export const PUBLICATIONS = [
     { photoId: 'pub-ternary-oxides', fields: ['Machine learning potential'], title: 'Stability and equilibrium structures of unknown ternary metal oxides explored by machine-learned potentials', authors: 'Hwang, S., **Jung, J.**, Hong, C., Jeong, W., Kang, S.* & Han, S.*', venue: 'J. Am. Chem. Soc. 145, 19378\u201319386 \u2014 Supplementary cover', doi: '10.1021/jacs.3c06210' },
   ]},
   { year: '2022', items: [
-    { photoId: 'pub-tin-ald', fields: ['Multi-scale simulation', 'First-principles calculation'], title: 'Atomistic kinetic Monte Carlo simulation on atomic layer deposition of TiN thin film', authors: 'Kim, S., An, H., Oh, S., **Jung, J.**, Kim, B., Nam, S. K. & Han, S.*', venue: 'Comput. Mater. Sci. 231, 111620', doi: '10.1016/j.commatsci.2022.111620' },
+    { photoId: 'pub-tin-ald', fields: ['Multi-scale simulation', 'First-principles calculation'], title: 'Atomistic kinetic Monte Carlo simulation on atomic layer deposition of TiN thin film', authors: 'Kim, S., An, H., Oh, S., **Jung, J.**, Kim, B., Nam, S. K. & Han, S.*', venue: 'Comput. Mater. Sci. 213, 111620', doi: '10.1016/j.commatsci.2022.111620' },
   ]},
   { year: '2021', items: [
     { photoId: 'pub-metadynamics', fields: ['Machine learning potential'], title: 'Metadynamics sampling in atomic environment space for collecting training data for machine learning potentials', authors: 'Yoo, D.\u2020, **Jung, J.\u2020**, Jeong, W. & Han, S.*', venue: 'npj Comput. Mater. 7, 131', doi: '10.1038/s41524-021-00595-5' },
